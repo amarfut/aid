@@ -1,0 +1,38 @@
+﻿@model Web.Views.Components.TopMenu.TopMenuViewModel
+
+<ul class="menu">
+    <li>
+        <label for="drop-1" class="toggle">Карьера в IT</label>
+        <a href="#" class="top-link">Карьера в IT</a>
+        <input type="checkbox" id="drop-1" />
+
+        <ul>
+            @foreach (var career in Model.CareerPosts)
+            {
+                <li>
+                    @{string imagePath = $"https://storage.googleapis.com/youit/images/{career.Url}_mini.png"; }
+                    <img src="@imagePath" alt="@career.Title" />
+                    <a asp-controller="Home" asp-action="Post" asp-route-url="@career.Url">@career.Title</a>
+                    <div style="clear: left;"></div>
+                </li>
+            }
+        </ul>
+    </li>
+
+    <li style="margin-left:10px;">
+        <label for="drop-2" class="toggle">Программирование</label>
+        <a href="#" class="top-link">Программирование</a>
+        <input type="checkbox" id="drop-2" />
+        <ul>
+            @foreach (var programmingPost in Model.ProgrammingPosts)
+            {
+            <li>
+                @{string imagePath = $"https://storage.googleapis.com/youit/images/{programmingPost.Url}_mini.png"; }
+                <img src="@imagePath" alt="@programmingPost.Title" />
+                <a asp-controller="Home" asp-action="Post" asp-route-url="@programmingPost.Url">@programmingPost.Title</a>
+                <div style="clear: left;"></div>
+            </li>
+            }
+        </ul>
+    </li>
+</ul>

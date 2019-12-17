@@ -1,0 +1,6 @@
+{
+  "MongoConnection": {
+    "ConnectionString": "mongodb://maindbadmin:81Osuzov@localhost",
+    "Database": "maindb"
+  }
+}

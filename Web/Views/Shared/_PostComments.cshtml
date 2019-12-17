@@ -1,0 +1,62 @@
+﻿@model Services.DTOs.PostDto
+@using Web.Views.Shared;
+@using Web.Utils;
+
+@{
+    int totalCommentsCount = @Model.Comments.Count + @Model.Comments.SelectMany(c => c.Answers).Count();
+}
+
+<a id="begin-comments"></a>
+
+<div id="post-comments-form" class="comments-wrapper">
+    <p><b>Комментарии (@totalCommentsCount)</b></p>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div id="comment-box-root">
+            @await Html.PartialAsync("_CommentForm", new CommentFormViewModel(Model.Id, ""))
+        </div>
+    }
+    else
+    {
+        <div style="margin-bottom:20px;">
+            <p style="color:#ca0606;">Авторизируйтесь для участия в дискуссии</p>
+            <a asp-controller="Account" asp-action="SignInExternal" asp-route-externalProvider="Google" title="Google">
+                <img src="@Helper.GetImageUrl("google.png")" alt="Google" />
+            </a>
+
+            <a asp-controller="Account" asp-action="SignInExternal" asp-route-externalProvider="Facebook" title="Facebook">
+                <img src="@Helper.GetImageUrl("facebook.png")" alt="Facebook" />
+            </a>
+
+            <a asp-controller="Account" asp-action="SignInExternal" asp-route-externalProvider="VKontakte" title="Vkontakte">
+                <img src="@Helper.GetImageUrl("vk.png")" alt="ВКонтакте" />
+            </a>
+        </div>
+    }
+
+
+    @foreach (var comment in Model.Comments)
+    {
+        @await Html.PartialAsync("_CommentDetails", new CommentDetailsViewModel(comment));
+
+        <div class="comment-answers">
+
+            <div id="@comment.Id-comment-box">
+                @await Html.PartialAsync("_CommentForm", new CommentFormViewModel(Model.Id, comment.Id))
+            </div>
+
+            @foreach (var answerComment in comment.Answers)
+            {
+                @await Html.PartialAsync("_CommentDetails", new CommentDetailsViewModel(answerComment, displayUserName: true));
+
+                <div id="@answerComment.Id-comment-box"  class="comment-answers">
+                    @await Html.PartialAsync("_CommentForm", new CommentFormViewModel(Model.Id, comment.Id))
+                </div>
+            }
+
+        </div>
+    }
+</div>
+
+<script src="~/js/comments.js" async></script>

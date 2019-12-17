@@ -1,0 +1,15 @@
+﻿@{Layout = null;}
+
+    <div id="authorizeModal" class="modal" style="text-align:center;">
+
+        <h2>Авторизация</h2>
+
+        <p style="font-size:16px;">
+            Авторизируйтесь на <b>youIT</b> с помощью популярных социальных сетей:
+        </p>
+
+        @await Html.PartialAsync("_AuthorizeButtons")
+
+        <a href="#" rel="modal:close" style="color:#084a92; text-decoration:underline;">не сейчас</a>
+        <p></p>
+    </div>

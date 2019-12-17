@@ -1,0 +1,166 @@
+﻿@using Web.Utils;
+@using Microsoft.AspNetCore.Http.Features
+@{
+    var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
+    var cookieString = consentFeature?.CreateConsentCookie();
+
+    string metaDescription = string.IsNullOrEmpty(ViewBag.MetaDescription) ?
+        "Сайт YouIT лаконично и регулярно отвечает людям на наиболее важные вопросы о программировании и карьере в сфере информационных технологий." :
+        ViewBag.MetaDescription;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <meta name="yandex-verification" content="d5228bc7b1b19655" />
+    <meta name="description" content="@metaDescription" />
+    <meta name="keywords" content="Программирование, IT, код, собеседование, тестирование, ООП, Junior, Senior, Аутсорсинг, Алгоритмы, Веб-сервер" />
+    <meta property="facebook_app_id" content="2380770835522263">
+    <meta property="fb:pages" content="100856011416393">
+    <meta property="fb:app_id" content="2380770835522263">
+    <meta property="vk:app_id" content="7216246">
+    <meta property="og:title" content="YouIT">
+    <meta property="og:image" content="https://storage.googleapis.com/youit/site/logo.png">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:width" content="315">
+    <meta property="og:description" content="@metaDescription">
+    <meta property="og:url" content="https://youit.pro">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="YouIT - программирование и карьера в IT">
+
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/all.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://storage.googleapis.com/youit/favicon/apple-touch-icon.png">
+    <link rel="icon" href="/favicon-32x32.png">
+    <link rel="icon" href="/favicon-16x16.png">
+    <link rel="icon" href="/favicon.ico">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script class="_iub_cs_activate" type="text/plain" async suppressedsrc="https://www.googletagmanager.com/gtag/js?id=UA-99938281-2">
+        </script>
+        <script class="_iub_cs_activate-inline" type="text/plain">
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'UA-99938281-2');
+        </script>
+
+        <script class="_iub_cs_activate" type="text/plain" data-ad-client="ca-pub-4128223586304442" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+        </script>
+
+    <script type="text/javascript">
+                var _iub = _iub || [];
+                _iub.csConfiguration = {
+                    "lang": "ru",
+                    "siteId": 1742269,
+                    "cookiePolicyId": 11210594,
+                    "consentOnContinuedBrowsing": false,
+                    "cookiePolicyUrl": "https://youit.pro/privacy",
+                    "banner": {
+                        "acceptButtonDisplay": true,
+                        "position": "bottom"
+                    },
+                    callback: {
+                        onConsentRead: function () {
+                            document.cookie = '@cookieString';
+                        }
+                    }
+                };
+        </script>
+        <script type="text/javascript" src="//cdn.iubenda.com/cs/stable/iubenda_cs.js" charset="UTF-8" async></script>
+    <!--x-->
+</head>
+<body>
+
+    <div class="header">
+
+
+    </div>
+    <div class="wrapper">
+        <div class="box top-menu">
+            <div class="nav">
+                <div class="logo">
+                    <a href="/">
+                        <img src="@Helper.GetImageUrl("logo.png")" alt="YouIT" />
+                    </a>
+                </div>
+                <div class="menu">
+                    @await Component.InvokeAsync("TopMenu")
+                </div>
+                <div class="login-bar">
+                    <div class="search">
+                        <form id="searchForm" method="post" asp-action="Search" class="desktop">
+                            <div style="position:relative;">
+                                <input id="searchBox" type="text" class="searchTerm" name="term" placeholder="Что ищем?">
+                                <a href="#" onclick="searchClick()">
+                                    <img src="@Helper.GetImageUrl("search.png")" alt="Искать" />
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="login">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="/profile/">@User.Identity.Name</a>
+                            <a asp-controller="account" asp-action="signOut"><i class="fas fa-sign-out-alt"></i></a>
+                        }
+                        else
+                        {
+                            <span onclick="loadAuthorizeModal()" class="login-link">
+                                <i class="fas fa-sign-in-alt"></i> Войти
+                            </span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box sidebar">
+            <div class="topCommentsBar">
+                @await Component.InvokeAsync("RealTimeComments")
+            </div>
+
+            <div class="subscribeBar" style="text-align:center">
+                <span>Подписаться на обновления</span>
+
+                <div>
+                    <a href="https://t.me/youitpro" target="_blank" style="font-size:50px;">
+                        <i class="fab fa-telegram" style="color:#0088cc"></i>
+                    </a>
+                    <a href="https://vk.com/youit_pro" target="_blank" style="font-size:60px;">
+                        <i class="fab fa-vk" style="color:#4c75a3;"></i>
+                    </a>
+                    <a href="https://www.facebook.com/youit.pro" target="_blank" style="font-size:50px;">
+                        <i class="fab fa-facebook-f" style="color:#4c75a3"></i>
+                    </a>
+                </div>
+                <span style="font-size:16px;">Подписавшись, Вы никогда не<br /> пропустите появление нового контента</span>
+
+            </div>
+        </div>
+
+        @RenderBody()
+
+        @await Html.PartialAsync("_Footer")
+        <script async>
+            searchClick = () => {
+                if (!$('#searchBox').val()) return;
+                document.getElementById('searchForm').submit();
+            }
+
+            loadAuthorizeModal = () => {
+                $('#authorizeModal').modal('show');
+            }
+        </script>
+    </div>
+    @await Html.PartialAsync("_Authorize")
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿@model Web.Models.PostMapViewModel
+
+    <div class="box full-post">
+        <h1>Все статьи сайта</h1>
+        <h3>
+            Программирование
+        </h3>
+
+        <ul>
+            @foreach (var post in Model.Programming)
+            {
+                <li><a href="/post/@post.Url">@post.Title</a></li>
+            }
+        </ul>
+
+        <h3>
+            Карьера в IT
+        </h3>
+
+        <ul>
+            @foreach (var post in Model.Career)
+            {
+                <li><a href="/post/@post.Url">@post.Title</a></li>
+            }
+        </ul>
+
+    </div>

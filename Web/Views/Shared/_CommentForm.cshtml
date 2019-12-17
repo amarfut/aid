@@ -1,0 +1,26 @@
+﻿@using Web.Utils
+@using Web.Views.Shared;
+@model CommentFormViewModel
+
+<div style="display:grid; grid-template-columns: 1fr 10fr;">
+    @{string url = Helper.GetUserPhotoUrl(User); }
+
+    <div class="user-ava"><img src="@url" alt="@User.Identity.Name" /></div>
+    <div>
+        <form class="pure-form">
+            <textarea class="pure-input-1" placeholder="Комментировать..."></textarea>
+            <div class="comment-button" data-bind="click: function() { addComment('@Model.PostId', '@Model.ParentCommentId') }">
+                Комментировать
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.ParentCommentId))
+            {
+                <div style="font-size:11px; margin-top:9px; font-size:14px; font-weight:bold; cursor:pointer;"
+                     data-bind="click: closeAllAnswerCommentBox">
+                    Не комментировать
+                </div>
+            }
+
+        </form>
+    </div>
+</div>

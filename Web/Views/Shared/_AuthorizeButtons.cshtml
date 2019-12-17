@@ -1,0 +1,21 @@
+﻿@using Web.Utils
+
+<div class="social-links-auth-wrapper">
+    <div>
+        <a asp-controller="Account" asp-action="SignInExternal" asp-route-externalProvider="Google" title="Google">
+            <img src="@Helper.GetImageUrl("google.png")" alt="Google" />
+        </a>
+    </div>
+
+    <div>
+        <a asp-controller="Account" asp-action="SignInExternal" asp-route-externalProvider="Facebook" title="Facebook">
+            <img src="@Helper.GetImageUrl("facebook.png")" alt="Facebook" />
+        </a>
+    </div>
+
+    <div>
+        <a asp-controller="Account" asp-action="SignInExternal" asp-route-externalProvider="VKontakte" title="Vkontakte">
+            <img src="@Helper.GetImageUrl("vk.png")" alt="ВКонтакте" />
+        </a>
+    </div>
+</div>

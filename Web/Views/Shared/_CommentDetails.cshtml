@@ -1,0 +1,72 @@
+﻿@using Services.DTOs
+@using Web.Utils
+@using Web.Views.Shared;
+@model CommentDetailsViewModel
+
+@{
+    CommentDto comment = Model.CommentDto;
+
+    string thumbUpClass = "noReaction";
+    string thumbDownClass = "noReaction";
+
+    if (User.Identity.IsAuthenticated)
+    {
+        string userId = Helper.GetUserId(User);
+
+        if (Model.CommentDto.WhoLiked.Contains(userId))
+        {
+            thumbUpClass = "liked";
+        }
+        else if (Model.CommentDto.WhoDisliked.Contains(userId))
+        {
+            thumbDownClass = "disliked";
+        }
+    }
+}
+
+<a id="@comment.Id"></a>
+<div class="single-comment-wrapper">
+    <div class="user-ava"><img src="@comment.UserPhoto" alt="@comment.UserName" /></div>
+    <div>
+        <div class="username">
+            @comment.UserName
+            @if (!comment.IsDeleted)
+            {
+                <span class="comment-created">@Helper.GetRelativeTime(comment.Created)</span>
+            }
+        </div>
+        @if (comment.IsDeleted)
+        {
+            <div class="deleted-comment-text">Комментарий был удален</div>
+        }
+        else
+        {
+            <div class="comment-text">@comment.Text</div>
+            <span style="font-size:11px; font-weight:bold;">
+                <span id="@comment.Id-likes" class="@thumbUpClass">
+                    <span data-bind="click: function() { setReaction('@comment.Id', '@comment.ParentCommentId', true) }">
+                        <span class="comment-likes">@comment.Likes</span>
+                        <i class="far fa-thumbs-up"></i>
+                    </span>
+                </span>
+                &nbsp;
+                <span id="@comment.Id-dislikes" class="@thumbDownClass">
+                    <span data-bind="click: function() { setReaction('@comment.Id', '@comment.ParentCommentId', false) }">
+                        <span class="comment-dislikes">@comment.Dislikes</span>
+                        <i class="far fa-thumbs-down"></i>
+                    </span>
+                </span>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+
+                    string userName = Model.DisplayUserName ? comment.UserName : "";
+                    <span data-bind="click: function() { displayAnswerCommentBox('@comment.Id', '@userName') }" class="answer-comment-action">
+                        Ответить
+                    </span>
+                }
+            </span>
+        }
+
+    </div>
+</div>

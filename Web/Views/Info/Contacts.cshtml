@@ -1,0 +1,59 @@
+﻿<div class="box full-post">
+    <h1>Контакты</h1>
+
+    <p>
+        Свяжитесь с нами, воспользовавшись нашим электронным адресом
+        <a href="mailto: admin@youit.pro" style="color:#092592; font-weight:bold;">admin@youit.pro</a>
+        или специальной контактной формой ниже.
+    </p>
+
+    <div class="pure-form">
+        <fieldset>
+            <p>
+                <input id="name" type="text" placeholder="Имя" style="width:100%;" required />
+            </p>
+            <p>
+                <input id="email" type="email" style="width:100%;" placeholder="Email" required />
+            </p>
+            <p>
+                <input id="subject" type="text" placeholder="Тема" style="width:100%;" required />
+            </p>
+            <textarea id="text" class="pure-input-1" placeholder="Сообщение" rows="5" required></textarea>
+            <span style="font-size:11px; color:#ff0000;">* все поля обязательны для заполнения</span>
+            <p>
+                <button class="pure-button pure-button-primary" onclick="send();">Отправить</button>
+            </p>
+
+            <div id="successModal" class="modal">
+                <p>Спасибо!</p>
+                <p>Ваше сообщение успешно отправлено. Мы ответим вам в течение 24 часов.</p>
+            </div>
+
+            <script>
+                send = () => {
+                    const name = $('#name').val(), email = $('#email').val(), subject = $('#subject').val(), text = $('#text').val();
+                    if (!name || !email || !subject || !text) return;
+
+                    $.ajax({
+                        url: '/info/sendmessage',
+                        type: 'POST',
+                        contentType: "application/json",
+                        data: JSON.stringify({ Subject: subject, Name: name, Mail: email, Text: text }),
+                        success: (data) => {
+                            $('#successModal').modal('show');
+                            $('#name').val('');
+                            $('#email').val('');
+                            $('#subject').val('');
+                            $('#text').val('');
+                        },
+                        error: (error) => { }
+                    });
+                }
+
+
+            </script>
+
+        </fieldset>
+    </div>
+
+</div>

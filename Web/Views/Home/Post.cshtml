@@ -1,0 +1,84 @@
+﻿@model Services.DTOs.PostDto
+@using Web.Utils
+@using System.Text.RegularExpressions
+
+@{
+    string thumbUpClass = "noReaction";
+    string thumbDownClass = "noReaction";
+
+    if (User.Identity.IsAuthenticated)
+    {
+        string userId = Helper.GetUserId(User);
+        if (Model.WhoLiked.Contains(userId))
+        {
+            thumbUpClass = "liked";
+        }
+        else if (Model.WhoDisliked.Contains(userId))
+        {
+            thumbDownClass = "disliked";
+        }
+    }
+}
+
+<div class="box full-post">
+
+    <h1>@Model.Title</h1>
+
+    @{
+        string postUrl = "http://youit.pro/post/" + Model.Url;
+
+        string shareVK = "https://vk.com/share.php?url=" + postUrl;
+        string shareFB = "https://www.facebook.com/sharer/sharer.php?u=" + postUrl;
+        string shareLI = "https://www.linkedin.com/sharing/share-offsite/?url=" + postUrl;
+    }
+
+    <div id="post-statistic">
+        <div>
+
+            <i class="far fa-eye"></i> @Model.ViewsFormatted &nbsp;
+            <a href="#begin-comments" style="color:#9b9b9b;"><i class="far fa-comment"></i> @Model.CommentsCount</a> &nbsp;
+
+            <span id="post-likes" class="@thumbUpClass" data-bind="click: function() { setLike('@Model.Id') }" style="cursor:pointer;">
+                <i class="far fa-thumbs-up"></i> <span>@Model.Likes</span>
+            </span> &nbsp;
+            <span id="post-dislikes" class="@thumbDownClass" data-bind="click: function() { setDislike('@Model.Id') }" style="cursor:pointer;">
+                <i class="far fa-thumbs-down"></i> <span>@Model.Dislikes</span>
+            </span>
+
+            | <span>Добавлено @Helper.GetRelativeTime(Model.Created)</span> &nbsp;
+        </div>
+       
+        <div style="margin-top:10px;">
+            <a href="@shareVK" class="pure-button pure-button-primary social-share-button" style="background-color:#45668e;">
+                ВК <i class="far fa-share-square"></i>
+            </a>
+            <a href="@shareFB" class="pure-button pure-button-primary social-share-button" style="background-color:#3b5998;">
+                FB <i class="far fa-share-square"></i>
+            </a>
+            <a href="@shareLI" class="pure-button pure-button-primary social-share-button" style="background-color:#0e76a8;">
+                LI <i class="far fa-share-square"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="post-text">
+        @Html.Raw(Model.Text)
+    </div>
+
+
+    @await Html.PartialAsync("_PostComments", Model)
+
+    <p></p>
+    <p><b>Вас также может заинтересовать</b></p>
+    <div id="more-posts" class="more-posts-section">
+        <!-- ko foreach: morePosts -->
+        <div style="margin-bottom:30px;">
+            <a data-bind="attr: { href: url }">
+                <img style="max-width:100%; border-radius:3px;" data-bind="attr: { src: image, alt: title }" />
+                <h3 data-bind="text: title" style="margin-top:0px;"></h3>
+            </a>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
+<script src="~/js/full-post.js" async></script>

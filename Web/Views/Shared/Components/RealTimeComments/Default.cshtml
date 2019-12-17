@@ -1,0 +1,37 @@
+﻿@model List<Services.DTOs.CommentPreviewDto>
+@using Microsoft.AspNetCore.Mvc;
+
+
+<span style="font-size:23px;">Что сейчас обсуждают?</span>
+<p></p>
+@foreach (var comment in Model)
+{
+    int last = comment.Text.Length > 120 ? 120 : comment.Text.Length;
+    string url = $"/post/{comment.PostUrl}#{comment.CommentId}";
+
+    <div style="margin-top:30px; text-align:left; font-size:15px;">
+        <a href="@url">
+            <div class="user-ava" style="float:left; margin-top:3px;">
+
+                @if (string.IsNullOrEmpty(comment.UserPhotoUrl))
+                {
+                    <i class="fas fa-portrait" style="font-size:64px; color:#99afbe;"></i>
+                }
+                else
+                {
+                    <img src="@comment.UserPhotoUrl" alt="@comment.UserName" />
+                }
+            </div>
+            <span>
+                <span style="color:#2d66a3;">@comment.UserName</span> <br />
+                <span style="font-weight:bold;">@comment.PostTitle</span>
+            </span>
+            <div style="clear:both"></div>
+
+            <div style="padding-top:5px; font-style:italic;">
+                @comment.Text.Substring(0, last)...
+
+            </div>
+        </a>
+    </div>
+}

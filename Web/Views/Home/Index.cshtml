@@ -1,0 +1,27 @@
+﻿<!-- ko foreach: posts -->
+<div class="box content">
+    <a data-bind="attr: { href: postUrl }">
+        <img style="max-width:100%" data-bind="attr: { src: imageUrl, alt: title }" />
+    </a>
+    <div class="post-button-wrapper">
+        <div><i class="far fa-eye"></i> <span data-bind="text: viewsCount"></span></div>
+        <a data-bind="attr: { href: postUrl + '#begin-comments' }"> <div><i class="far fa-comment"></i> <span data-bind="text: commentsCount"></span></div></a>
+        <a data-bind="click: $parent.like"><div><i class="far fa-thumbs-up"></i> <span data-bind="text: likesCount"></span></div></a>
+        <a data-bind="click: $parent.dislike"><div><i class="far fa-thumbs-down"></i> <span data-bind="text: dislikesCount"></span></div></a>
+    </div>
+    <a data-bind="attr: { href: postUrl }">
+        <h3 data-bind="text: title"></h3>
+    </a>
+</div>
+<!-- /ko -->
+
+
+<div class="box more-posts-button">
+    <p class="loader" style="margin:auto" data-bind="visible: !morePostsButtonVisible() && !endPostsTextVisible()"></p>
+    <span data-bind="click: addPosts, visible: morePostsButtonVisible" style="padding:10px; color:#FFF;">
+        Загрузить больше постов
+    </span>
+    <h4 data-bind="visible: endPostsTextVisible">Извините, посты закончились</h4>
+</div>
+
+<script src="~/js/start-page.js" async></script>

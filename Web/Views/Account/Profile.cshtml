@@ -1,0 +1,81 @@
+﻿@model Web.Controllers.ProfileViewModel
+@using Web.Utils
+
+@{Layout = "~/Views/Shared/_Layout.cshtml";}
+
+<div class="full-post">
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        string c1 = Model.Action == "comments" ? "bold" : "";
+        string c3 = Model.Action == "likedposts" ? "bold" : "";
+        string c4 = Model.Action == "editprofile" ? "bold" : "";
+
+        <div class="account-menu-wrapper">
+            <a asp-controller="account" asp-action="profile" asp-route-param="editprofile"><div class="@c4">Профиль</div></a>
+            <a asp-controller="account" asp-action="profile" asp-route-param="comments"><div class="@c1">Комментарии</div></a>
+            <a asp-controller="account" asp-action="profile" asp-route-param="likedposts"><div class="@c3">Понравившиеся</div></a>
+        </div>
+
+        <p>&nbsp;</p>
+
+        <div>
+            @if (Model.Action == "comments")
+            {
+                <div id="profile-comments">
+                    <!-- ko foreach: comments -->
+                    <div>
+                        <a data-bind="attr: { href: $parent.getPostUrl(postUrl, commentId) }">
+                            <b data-bind="text: postTitle"></b>
+                        </a>
+                        <p>Добавлено <span data-bind="text: createdTimeRelative"></span> </p>
+                        <p data-bind="text: text"></p>
+
+                        <button class="button-error pure-button" data-bind="click: $parent.delete">
+                            Удалить комментарий
+                        </button>
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <script src="~/js/profile.js" async></script>
+            }
+            else if (Model.Action == "likedposts")
+            {
+                foreach (var post in Model.Posts)
+                {
+                    string imagePath = $"https://storage.googleapis.com/youit/images/{post.Url}_mini.png";
+                    string postUrl = "/post/" + post.Url;
+
+                    <a href="@postUrl">
+                        <img src="@imagePath" class="liked-posts-preview" alt="@post.Title" />
+                        <b>@post.Title</b><br />
+                        @Html.Raw(post.TextPreview)
+                    </a>
+                    <div style="clear:both;"></div>
+                }
+            }
+            else if (Model.Action == "editprofile")
+            {
+                <div id="profile-view">
+                    <div id="photoBox">
+                        <img id="userPhoto" src="@Model.UserPhoto" alt="Аватар" />
+                    </div>
+                    <p>Ваши данные:</p>
+                    <form class="pure-form">
+                        <input type="text" id="userNameInput" placeholder="@User.Identity.Name" />
+                    </form>
+                    <p>
+                        <button class="pure-button pure-button-active" onclick="save()">Сохранить</button>
+                    </p>
+
+                    <p style="font-size:13px; font-style:italic;">
+                        Если Вы желаете удалить свою учетную запись, напишите нам письмо на наш электронный адрес
+                        <a href="#">admin@youit.pro</a>. В письме обязательно укажите уникальный идентификатор вашей учетной записи: <b>@Model.UserId</b>
+                    </p>
+                </div>
+
+                <script src="~/js/user-profile-info.js" async></script>
+            }
+        </div>
+    }
+</div>
