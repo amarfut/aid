@@ -72,7 +72,7 @@ div[id$='comment-box'] {
 
 .image-in-post {
     margin-top: 10px;
-    width: 100%;
+    width: 98%;
 }
 
 .comments-wrapper {
@@ -472,6 +472,7 @@ h3 {
 
 .logo {
     margin-top: -7px;
+    margin-left:-3px;
 }
 
 .login-bar {
