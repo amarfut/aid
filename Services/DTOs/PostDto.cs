@@ -24,6 +24,7 @@ namespace Services.DTOs
             WhoDisliked = post.WhoDisliked;
             Created = post.Created;
             Description = post.Description;
+            Similar = post.Similar;
 
             foreach (var comment in comments)
             {
@@ -44,6 +45,8 @@ namespace Services.DTOs
 
         public string[] WhoLiked { get; set; }
         public string[] WhoDisliked { get; set; }
+        public SimilarPost[] Similar { get; set; }
+
 
         public DateTime Created { get; set; }
 

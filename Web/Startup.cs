@@ -54,7 +54,7 @@ namespace Web
                 .AddGoogle("Google", options =>
                 {
                     options.ClientId = "684772232762-1o7rdk7do85q1ctvpb56o4of1oh2djdi.apps.googleusercontent.com";
-                    options.ClientSecret = "q1RiNgNRPjA9gImVqmtmT2yJ";
+                    options.ClientSecret = "Kjzp_QFOVeXwpJA2f_E4bnyG";
                     options.Scope.Add("https://www.googleapis.com/auth/userinfo.profile");
                     options.Events = new OAuthEvents
                     {
@@ -70,7 +70,7 @@ namespace Web
                 .AddFacebook("Facebook", options =>
                 {
                     options.ClientId = "2380770835522263";
-                    options.ClientSecret = "1edac297469681412d84c49cae2f5271";
+                    options.ClientSecret = "425b8e40404250c37792cf67c26d549e";
                     options.Events = new OAuthEvents
                     {
                         OnCreatingTicket = context =>
@@ -86,7 +86,7 @@ namespace Web
                 .AddVkontakte("VKontakte", options =>
                 {
                     options.ClientId = "7216246";
-                    options.ClientSecret = "moChwqljCTNkbH0XfE26";
+                    options.ClientSecret = "q5eUFXzAOjH2fB2yvXl0";
                     options.Events = new OAuthEvents
                     {
                         OnCreatingTicket = context =>

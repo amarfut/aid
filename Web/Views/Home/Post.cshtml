@@ -47,7 +47,7 @@
 
             | <span>Добавлено @Helper.GetRelativeTime(Model.Created)</span> &nbsp;
         </div>
-       
+
         <div style="margin-top:10px;">
             <a href="@shareVK" class="pure-button pure-button-primary social-share-button" style="background-color:#45668e;">
                 ВК <i class="far fa-share-square"></i>
@@ -63,8 +63,20 @@
 
     <div class="post-text">
         @Html.Raw(Model.Text)
-    </div>
 
+        @if (Model.Similar != null && Model.Similar.Length > 0)
+        {
+            <h3>Похожие статьи</h3>
+            <ul>
+                @foreach (var post in Model.Similar)
+                {
+                    <li>
+                        <a href="/post/@post.Url">@post.Title</a>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
 
     @await Html.PartialAsync("_PostComments", Model)
 

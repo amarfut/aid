@@ -107,7 +107,8 @@ namespace Web.Controllers
 
             ViewBag.Title = post.Title + " - YouIT";
             ViewBag.MetaDescription = post.Description;
-
+            ViewBag.ImageUrl = "https://storage.googleapis.com/youit/images/" + post.Url + ".png";
+       
             return View(post);
         }
 

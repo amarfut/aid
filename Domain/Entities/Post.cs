@@ -6,6 +6,13 @@ using System.Text;
 
 namespace Domain.Entities
 {
+
+    public class SimilarPost
+    {
+        public string Title { get; set; }
+        public string Url { get; set; }
+    }
+
     public class Post : Entity
     {
         public string Title { get; set; }
@@ -29,5 +36,8 @@ namespace Domain.Entities
 
         [BsonIgnoreIfDefault]
         public string[] WhoDisliked { get; set; } = new string[] { };
+
+        [BsonIgnoreIfDefault]
+        public SimilarPost[] Similar { get; set; } = new SimilarPost[] { };
     }
 }

@@ -7,6 +7,11 @@
     string metaDescription = string.IsNullOrEmpty(ViewBag.MetaDescription) ?
         "Сайт YouIT лаконично и регулярно отвечает людям на наиболее важные вопросы о программировании и карьере в сфере информационных технологий." :
         ViewBag.MetaDescription;
+
+    string imageUrl = string.IsNullOrEmpty(ViewBag.ImageUrl) ?
+        "https://storage.googleapis.com/youit/site/logo.png" :
+        ViewBag.ImageUrl;
+
 }
 <!DOCTYPE html>
 <html>
@@ -22,7 +27,7 @@
     <meta property="fb:app_id" content="2380770835522263">
     <meta property="vk:app_id" content="7216246">
     <meta property="og:title" content="YouIT">
-    <meta property="og:image" content="https://storage.googleapis.com/youit/site/logo.png">
+    <meta property="og:image" content="@imageUrl">
     <meta property="og:image:width" content="600">
     <meta property="og:image:width" content="315">
     <meta property="og:description" content="@metaDescription">
