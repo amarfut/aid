@@ -52,9 +52,32 @@ div[id$='comment-box'] {
     margin-left: 5px;
 }
 
-#post-statistic {
-    color: #9b9b9b;
+.read-also {
+    color:#a8a8a8;
 }
+
+.two-cols {
+    width: 100%;
+}
+
+    .two-cols td, .two-cols th {
+        padding-top: 10px;
+        padding: 3px;
+    }
+
+    .two-cols th {
+        text-align:left;
+        color:#ebebeb;
+        background-color:#303030;
+    }
+
+    .two-cols tr:nth-child(odd) {
+        background: #efefef;
+    }
+
+    #post-statistic {
+        color: #9b9b9b;
+    }
 
 .login {
     float: right;

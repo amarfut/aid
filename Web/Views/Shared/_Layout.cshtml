@@ -50,16 +50,15 @@
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script class="_iub_cs_activate" type="text/plain" async suppressedsrc="https://www.googletagmanager.com/gtag/js?id=UA-99938281-2">
-        </script>
-        <script class="_iub_cs_activate-inline" type="text/plain">
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
-            gtag('config', 'UA-99938281-2');
-        </script>
+    </script>
+    <script class="_iub_cs_activate-inline" type="text/plain">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-99938281-2');
+    </script>
 
-        <script class="_iub_cs_activate" type="text/plain" data-ad-client="ca-pub-4128223586304442" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
-        </script>
+    @*<script class="_iub_cs_activate" type="text/plain" async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>*@
 
     <script type="text/javascript">
                 var _iub = _iub || [];
@@ -79,14 +78,24 @@
                         }
                     }
                 };
-        </script>
-        <script type="text/javascript" src="//cdn.iubenda.com/cs/stable/iubenda_cs.js" charset="UTF-8" async></script>
-    <!--x-->
+    </script>
+ 
 </head>
 <body>
-
     <div class="header">
 
+        <script class="_iub_cs_activate" type="text/plain" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+        </script>
+        <!-- youit_header_horizontal -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4128223586304442"
+             data-ad-slot="9870998231"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script class="_iub_cs_activate" type="text/plain">
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
 
     </div>
     <div class="wrapper">
@@ -166,6 +175,9 @@
             }
         </script>
     </div>
+
+    <script type="text/javascript" src="//cdn.iubenda.com/cs/stable/iubenda_cs.js" charset="UTF-8" async></script>
+
     @await Html.PartialAsync("_Authorize")
 </body>
 </html>
