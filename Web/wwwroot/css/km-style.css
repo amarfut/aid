@@ -1,4 +1,15 @@
-﻿
+﻿@font-face {
+    font-family: 'ProximaNovaRegular';
+    src: url('../fonts/ProximaNovaRegular/proximanovaregular.eot');
+    src: url('../fonts/ProximaNovaRegular/proximanovaregular.woff') format('woff'), url('../fonts/ProximaNovaRegular/proximanovaregular.woff2') format('woff2'), url('../fonts/ProximaNovaRegular/proximanovaregular.ttf') format('truetype')
+}
+
+.main-content {
+    width: 90%;
+    margin: auto;
+    font-size: 17px;
+}
+
 table tr:nth-child(even) {
     background-color: #f8f8f8;
 }
@@ -7,9 +18,21 @@ table tr:hover {
     background-color: #ddd;
 }
 
+#header {
+    width: 100%;
+    min-height: 300px;
+    margin-bottom: 70px;
+    background-color: rgb(90, 89, 89);
+}
+
+
 .fa-circle {
     font-size: 11px;
     color: #d0d0d0;
+}
+
+i.fa-arrow-circle-up {
+font-size:27px;
 }
 
 table th {
@@ -34,6 +57,18 @@ body {
     font-family: ProximaNovaRegular, Verdana, Geneva, Tahoma, sans-serif, Tahoma, sans-serif;
     padding: 0;
     margin: 0;
+}
+
+h2 {
+    float: left;
+    margin-top: 0;
+    margin-right: 10px;
+}
+
+
+#map {
+    width: 100%;
+    text-align: left;
 }
 
 table#map th td:first-child,
