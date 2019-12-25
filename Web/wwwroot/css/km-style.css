@@ -12,6 +12,10 @@
 
 }
 
+i.fa-circle {
+color:#909090;
+}
+
 h1 {
     font-weight: normal;
     margin: 0 !important;
@@ -112,12 +116,16 @@ table.details tr td:first-child {
     width: 10%;
 }
 
+.ad {
+    margin: 20px 0 20px 0;
+}
+
 table.details th td:nth-of-type(3n),
 table.details tr td:nth-of-type(3n) {
     width: 30%;
 }
 
-i {
+i.map {
     color: rgb(241, 188, 11);
 }
 
