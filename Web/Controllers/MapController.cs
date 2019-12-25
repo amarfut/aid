@@ -8,7 +8,7 @@ namespace Web.Controllers
 {
     public class MapController : BaseController
     {
-        [HttpGet("map/{id}/", Name = "Map")]
+        [HttpGet("map/{id?}/", Name = "Map")]
         public async Task<IActionResult> Map(string id)
         {
             if (id == "dotnetweb")
