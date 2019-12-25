@@ -1,0 +1,12 @@
+.social-links-auth-wrapper {
+    grid-gap: 6px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    margin: auto;
+}
+
+    .social-links-auth-wrapper div {
+        text-align: center;
+        font-size: 66px;
+    }

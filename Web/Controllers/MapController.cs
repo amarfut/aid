@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Services.AppServices;
+using Services.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +13,12 @@ namespace Web.Controllers
         [HttpGet("map/{id?}/", Name = "Map")]
         public async Task<IActionResult> Map(string id)
         {
+            var postService = new PostService();
+            
             if (id == "dotnetweb")
             {
-                return View("DotNetWeb");
+                var post = await postService.GetPost("dotnetweb");
+                return View("DotNetWeb", post);
             }
 
 

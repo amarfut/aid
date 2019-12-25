@@ -4,6 +4,37 @@
     src: url('../fonts/ProximaNovaRegular/proximanovaregular.woff') format('woff'), url('../fonts/ProximaNovaRegular/proximanovaregular.woff2') format('woff2'), url('../fonts/ProximaNovaRegular/proximanovaregular.ttf') format('truetype')
 }
 
+.login-link {
+    color: rgb(35, 66, 133);
+    cursor: pointer !important;
+    font-size: 17px;
+    font-weight: 100;
+
+}
+
+h1 {
+    font-weight: normal;
+    margin: 0 !important;
+    padding-top: 70px;
+    text-align: center;
+    color: rgb(219, 219, 219);
+    font-size: 45px;
+}
+
+.descr {
+    text-align: center;
+    color: rgb(250, 250, 250);
+    font-size: 17px;
+}
+
+.info {
+    text-align: center;
+    padding-top: 30px;
+    margin: auto;
+    width: 50%;
+    color: rgb(250, 250, 250)
+}
+
 .main-content {
     width: 90%;
     margin: auto;

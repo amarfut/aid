@@ -9,6 +9,11 @@ namespace Services.DTOs
 {
     public class PostDto
     {
+        public PostDto(string id)
+        {
+            Id = id;
+        }
+
         public PostDto(Post post, List<Comment> comments, Dictionary<string, string> userPhotoMap)
         {
             Id = post.Id;

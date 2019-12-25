@@ -58,6 +58,7 @@ namespace Services.AppServices
             return post;
         }
 
+
         public async Task<List<PostPreviewDto>> GetPosts(PostType type)
         {
             DatabaseContext db = new DatabaseContext();

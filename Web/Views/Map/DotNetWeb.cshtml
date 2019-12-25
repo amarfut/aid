@@ -1,55 +1,119 @@
-﻿
+﻿@model Services.DTOs.PostDto
+@using Microsoft.AspNetCore.Http.Features
+
 @{
     Layout = null;
+
+    string url = "https://youit.pro/map/dotnetweb";
+
+    string twitter = "http://twitter.com/share?text=Карта знаний .NET Web программиста&url=" + url;
+
+    var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
+    var cookieString = consentFeature?.CreateConsentCookie();
+
 }
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>.NET Web developer</title>
+    <title>YouIT - Карта знаний .NET Web программиста</title>
 
     <link rel="stylesheet" href="~/css/km-style.css" />
     <link rel="stylesheet" href="~/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/comments.css" />
+    <link rel="stylesheet" href="~/css/authorize.css" />
+
+    <meta name="keywords" content="Программирование, IT, код, собеседование, тестирование, ООП, Junior, Senior, Аутсорсинг, Алгоритмы, Веб-сервер" />
+    <meta name="description" content="Детализированная карта знаний для .NET Web программистов от Trainee до Senior. Используйте для самообучения, поиска пробелов в знаниях, создания программ обучения, подготовки к собеседованиям и продвижениям по карьерной лестнице.">
+
+    <meta property="og:title" content="YouIT">
+    <meta property="og:description" content="Детализированная карта знаний для .NET Web программистов от Trainee до Senior. Используйте для самообучения, поиска пробелов в знаниях, создания программ обучения, подготовки к собеседованиям и продвижениям по карьерной лестнице.">
+
+    <meta property="og:image" content="">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:width" content="315">
+    <meta property="og:url" content="https://youit.pro">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="YouIT - программирование и карьера в IT">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="icon" href="/favicon-32x32.png">
+    <link rel="icon" href="/favicon-16x16.png">
+    <link rel="icon" href="/favicon.ico">
+
+
+
+    <script type="text/javascript">
+                var _iub = _iub || [];
+                _iub.csConfiguration = {
+                    "lang": "ru",
+                    "siteId": 1742269,
+                    "cookiePolicyId": 11210594,
+                    "consentOnContinuedBrowsing": false,
+                    "cookiePolicyUrl": "https://youit.pro/privacy",
+                    "banner": {
+                        "acceptButtonDisplay": true,
+                        "position": "bottom"
+                    },
+                    callback: {
+                        onConsentRead: function () {
+                            document.cookie = '@cookieString';
+                        }
+                    }
+                };
+    </script>
 
 </head>
-<body >
+<body>
 
 
     <div id="header">
-        <h1 style="        font-weight: normal;
-        margin: 0;
-        padding-top: 70px;
-        text-align: center;
-        color: rgb(219, 219, 219);
-        font-size: 45px;">
+        <h1>
             Карта знаний .NET Web программиста
         </h1>
-        <div style="        text-align: center;
-        color: rgb(250, 250, 250);
-        font-size: 17px;">
+        <div class="descr">
             Детализированная карта знаний для .NET Web программистов от Trainee до Senior.<br />
             Используйте для самообучения, поиска пробелов в знаниях, создания программ обучения,<br /> подготовки к собеседованиям и продвижениям по карьерной лестнице.
         </div>
 
-        <div style="        text-align: center;
-        padding-top: 30px;
-        margin: auto;
-        width: 50%;
-        color: rgb(250, 250, 250)">
+        <div class="info">
             <i class="far fa-calendar-alt"></i> Обновлено 23 декабря 2019 &nbsp;&nbsp;&nbsp;
             <span style="color: rgb(183, 183, 183)">Поделиться:</span>&nbsp;
-            <a href="#"><i class="fab fa-facebook-square"></i></a> &nbsp;
-            <a href="#"><i class="fab fa-twitter-square"></i></a> &nbsp;
-            <a href="#"><i class="fab fa-vk"></i></a> &nbsp;
-            <a href="#"><i class="fab fa-linkedin"></i></a> &nbsp;
-            <a href="#"><i class="fab fa-google-plus-square"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=@url"><i class="fab fa-facebook-square"></i></a> &nbsp;
+            <a href="@twitter"><i class="fab fa-twitter-square"></i></a> &nbsp;
+            <a href="https://vk.com/share.php?url=@url"><i class="fab fa-vk"></i></a> &nbsp;
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=@url"><i class="fab fa-linkedin"></i></a> &nbsp;
+            <a href="https://plus.google.com/share?url=@url"><i class="fab fa-google-plus-square"></i></a>
         </div>
     </div>
+
 
     <p>реклама</p>
 
 
     <div class="main-content">
+
+        <div style="margin-bottom:20px;">
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <span>Привет,</span> <a href="/profile/">@User.Identity.Name</a>
+                <a asp-controller="account" asp-action="signOut"><i class="fas fa-sign-out-alt"></i></a>
+                <br /><a href="#gotocomments">Перейти к комментариям</a>
+            }
+            else
+            {
+                <span onclick="loadAuthorizeModal()" class="login-link">
+                    <i class="fas fa-sign-in-alt"></i> Войти
+                </span>
+            }
+        </div>
+
         <a name="top"></a>
         <table id="map">
             <thead>
@@ -2894,18 +2958,18 @@
 
         <h3>Контрольные вопросы:</h3>
         <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>Какие нормальные формы Вам знакомы?</li>
+            <li>Сравните нормализацию и денормализацию баз данных.</li>
+            <li>Как моделируется отношение "многие ко многим" в MS SQL?</li>
+            <li>В чем разница между Primary Key и Foreign Key?</li>
+            <li>В чем разница между операторами LEFT JOIN vs INNER JOIN?</li>
+            <li>В чем разница между операторами CROSS JOIN и CROSS APPLY?</li>
+            <li>В чем отличия Кластерных индексов от Некластерных?</li>
+            <li>Для чего применяется оператор INCLUDE при создании некластерного индекса?</li>
+            <li>Какие уровни изоляций транзакций существуют?</li>
+            <li>Опишите свойства ACID.</li>
+            <li>Как избегать мертвых блокировок при работе с транзакциями?</li>
+            <li>В чем разница между временнями таблицами и CTE?</li>
         </ul>
 
 
@@ -2985,18 +3049,12 @@
 
         <h3>Контрольные вопросы:</h3>
         <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>В чем разница между централизованными и распределенными системами контроля версий?</li>
+            <li>В чем разница межжу командами git fetch и git pull в Git?</li>
+            <li>В чем разница между merge commit и merge squash в Git?</li>
+            <li>Что такое cherry-pick в Git?</li>
+            <li>Для чего применяются теги в Git?</li>
+            <li>Для чего применяются пулл-риквесты в Git?</li>
         </ul>
 
 
@@ -3075,32 +3133,33 @@
 
         <h3>Контрольные вопросы:</h3>
         <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>Опишите Scrum процесс.</li>
+            <li>Какие роли существуют в Scrum?</li>
+            <li>Какие церемонии существуют в Scrum?</li>
+            <li>В чем сходства и отличия методологий Scrum и Kanban?</li>
+            <li>В чем разница между оценкой в Story points и человеко-часах?</li>
         </ul>
+
+        <a name="gotocomments"></a>
+        <div style="width:70%;">
+            @await Html.PartialAsync("_PostComments", Model)
+        </div>
+
+
+
+        <script>
+            loadAuthorizeModal = () => {
+                $('#authorizeModal').modal('show');
+            }
+        </script>
+
+        <script type="text/javascript" src="//cdn.iubenda.com/cs/stable/iubenda_cs.js" charset="UTF-8" async></script>
+
+        @await Html.PartialAsync("_Authorize")
 
 
     </div>
 
-    <!--
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-    -->
 </body>
 </html>
 
