@@ -12,6 +12,8 @@
         "https://storage.googleapis.com/youit/site/logo.png" :
         ViewBag.ImageUrl;
 
+    string postUrl = string.IsNullOrEmpty(ViewBag.PostUrl) ? "https://youit.pro" : ViewBag.PostUrl;
+
 }
 <!DOCTYPE html>
 <html>
@@ -31,7 +33,7 @@
     <meta property="og:image:width" content="600">
     <meta property="og:image:width" content="315">
     <meta property="og:description" content="@metaDescription">
-    <meta property="og:url" content="https://youit.pro">
+    <meta property="og:url" content="@postUrl">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="YouIT - программирование и карьера в IT">
 
