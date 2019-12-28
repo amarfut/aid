@@ -62,9 +62,35 @@
     </div>
 
     <div class="post-text">
-        @Html.Raw(Model.Text)
 
-        <script class="_iub_cs_activate" type="text/plain" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        @if (Model.Text.Contains("{ad}"))
+        {
+            string[] parts = Model.Text.Split("{ad}");
+
+            @Html.Raw(parts[0])
+
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- youit_article_mid -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;min-width:400px;max-width:728px;width:100%;height:90px"
+                 data-ad-client="ca-pub-4128223586304442"
+                 data-ad-slot="1103265665"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+
+            @Html.Raw(parts[1])
+        }
+        else
+        {
+            @Html.Raw(Model.Text)
+        }
+
+
+
+
+        <script class="_iub_cs_activate" type="text/plain" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+        </script>
         <!-- youit_article_end -->
         <ins class="adsbygoogle"
              style="display:block"

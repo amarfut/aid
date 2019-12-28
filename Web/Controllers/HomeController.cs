@@ -20,6 +20,7 @@ using Services.Utils;
 using Web.Models;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
+using Web.Utils;
 
 namespace Web.Controllers
 {
@@ -53,6 +54,25 @@ namespace Web.Controllers
         public async Task<IEnumerable<PostPreviewDto>> LoadSimilarPosts(PostType type)
         {
             return await _postService.GetSimilarPosts(type);
+        }
+
+        [Route("tags/{tag?}")]
+        public async Task<IActionResult> PostsByTag(string tag)
+        {
+            if (string.IsNullOrEmpty(tag))
+            {
+                tag = "programming";
+            }
+
+            DatabaseContext _db = new DatabaseContext();
+            var posts = await _db.Posts.AsQueryable().Where(x => x.Tags.Contains(tag)).ToListAsync();
+
+            var models = posts.Select(p => new PostPreviewDto(p)).ToList();
+
+            var tags = await _db.Tags.Find(x => true).ToListAsync();
+            var display = tags.FirstOrDefault(t => t.Name == tag);
+            ViewBag.TagDisplayName = display == null ? tag : display.Display;
+            return View(models);
         }
 
         [Route("status/{code}")]

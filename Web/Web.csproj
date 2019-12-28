@@ -34,6 +34,9 @@
     <Content Update="Views\Map\Map.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Shared\Components\PostTags\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Shared\Components\RealTimeComments\Default.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

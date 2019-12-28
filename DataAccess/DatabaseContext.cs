@@ -39,5 +39,7 @@ namespace DataAccess
 
         public IMongoCollection<LogMessage> Logs => _database.GetCollection<LogMessage>("logs");
 
+        public IMongoCollection<PostTag> Tags => _database.GetCollection<PostTag>("tags");
+
     }
 }

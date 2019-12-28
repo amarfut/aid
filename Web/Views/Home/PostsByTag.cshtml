@@ -1,0 +1,24 @@
+﻿@using Services.DTOs;
+@using Web.Utils;
+@model List<PostPreviewDto>
+
+<div class="full-post">
+
+    <h3>Отфильтровано по "@ViewBag.TagDisplayName"</h3>
+    <br/>
+
+    @foreach (var post in Model)
+    {
+        string imagePath = $"https://storage.googleapis.com/youit/images/{post.Url}_mini.png";
+        string postUrl = "/post/" + post.Url;
+
+        <a href="@postUrl">
+            <img src="@imagePath" class="liked-posts-preview" alt="@post.Title" />
+            <b>@post.Title</b><br />
+            @Html.Raw(post.TextPreview)
+        </a>
+        <div style="clear:both;"></div>
+    }
+
+</div>
+

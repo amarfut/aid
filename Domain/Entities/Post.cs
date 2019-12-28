@@ -13,6 +13,8 @@ namespace Domain.Entities
         public string Url { get; set; }
     }
 
+    
+
     public class Post : Entity
     {
         public string Title { get; set; }
@@ -39,5 +41,8 @@ namespace Domain.Entities
 
         [BsonIgnoreIfDefault]
         public SimilarPost[] Similar { get; set; } = new SimilarPost[] { };
+
+        [BsonIgnoreIfDefault]
+        public string[] Tags { get; set; } = new string[] { };
     }
 }

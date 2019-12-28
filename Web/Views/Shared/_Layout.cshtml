@@ -89,18 +89,19 @@
 <body>
     <div class="header">
 
-        <script class="_iub_cs_activate" type="text/plain" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
-        </script>
-        <!-- youit_header_horizontal -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-4128223586304442"
-             data-ad-slot="9870998231"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script class="_iub_cs_activate" type="text/plain">
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+        <!--
+            <script class="_iub_cs_activate" type="text/plain" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+            </script>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-4128223586304442"
+                 data-ad-slot="9870998231"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script class="_iub_cs_activate" type="text/plain">
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        -->
 
     </div>
     <div class="wrapper">
@@ -143,15 +144,19 @@
         </div>
 
         <div class="box sidebar">
+
             <div class="topCommentsBar">
                 @await Component.InvokeAsync("RealTimeComments")
             </div>
 
+            <div class="subscribeBar">
+                @await Component.InvokeAsync("PostTags")
+            </div>
+
             <div class="subscribeBar" style="text-align:center">
-                <a href="/map/dotnetweb" style="font-size:25px; color:#4c75a3;">
+                <a href="/map/dotnetweb" style="font-size:25px;">
                     Карта знаний .NET Web программиста
                 </a>
-
             </div>
 
             <div class="subscribeBar" style="text-align:center">
