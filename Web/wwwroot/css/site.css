@@ -19,6 +19,12 @@ body {
     color: #e6e6e6 !important;
 }
 
+.post-tag {
+    background-color: #f8f7f7;
+    padding: 0 8px 0 8px;
+    border-radius: 8px;
+}
+
 a {
     text-decoration: none;
     color: #000;
@@ -115,6 +121,10 @@ a {
 
     .mobile-menu-button {
         display: block !important;
+    }
+
+    .nav {
+        grid-template-columns: 1fr 10fr !important;
     }
 }
 
@@ -249,6 +259,10 @@ h3 {
     grid-column: 3 / 4;
     grid-row: span 3 / 5;
     overflow: hidden;
+}
+
+.tag-link {
+   font-size:17px; color:#0c5ba7;
 }
 
 .subscribeBar {

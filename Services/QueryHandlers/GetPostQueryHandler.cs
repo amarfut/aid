@@ -19,9 +19,7 @@ namespace Services.QueryHandlers
 
         public async Task<PostDto> HandleAsync(GetPostQuery query)
         {
-            var post = await
-                 _db.Posts.Find(x => x.Url == query.Url)
-                .FirstOrDefaultAsync();
+            var post = await _db.Posts.Find(x => x.Url == query.Url).FirstOrDefaultAsync();
 
             if (post == null) return null;
 
@@ -48,7 +46,9 @@ namespace Services.QueryHandlers
             var userPhotos = await _db.Users.Find(filter).Project(x => new { x.Id, x.PhotoUrl }).ToListAsync();
             var userPhotoMap = userPhotos.ToDictionary(x => x.Id, x => x.PhotoUrl);
 
-            return new PostDto(post, comments, userPhotoMap);
+            var tags = await _db.Tags.Find(_ => true).ToListAsync() ?? new List<PostTag>();
+            var postTags = tags.Where(t => post.Tags.Contains(t.Name)).ToArray();
+            return new PostDto(post, comments, userPhotoMap, postTags);
         }
     }
 }

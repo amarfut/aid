@@ -14,7 +14,7 @@ namespace Services.DTOs
             Id = id;
         }
 
-        public PostDto(Post post, List<Comment> comments, Dictionary<string, string> userPhotoMap)
+        public PostDto(Post post, List<Comment> comments, Dictionary<string, string> userPhotoMap, PostTag[] tags)
         {
             Id = post.Id;
             Title = post.Title;
@@ -30,6 +30,7 @@ namespace Services.DTOs
             Created = post.Created;
             Description = post.Description;
             Similar = post.Similar;
+            Tags = tags;
 
             foreach (var comment in comments)
             {
@@ -47,6 +48,7 @@ namespace Services.DTOs
         public int Views { get; set; }
         public int Likes { get; set; }
         public int Dislikes { get; set; }
+        public PostTag[] Tags { get; set; }
 
         public string[] WhoLiked { get; set; }
         public string[] WhoDisliked { get; set; }
