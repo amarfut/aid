@@ -40,9 +40,9 @@ namespace Services.AppServices
         private DeleteCommentCommandHandler _deleteCommentCommandHandler = new DeleteCommentCommandHandler();
 
 
-        public async Task<IEnumerable<PostPreviewDto>> GetPostPreviews(int skip)
+        public async Task<IEnumerable<PostPreviewDto>> GetPostPreviews(int skip, int take)
         {
-            var posts = await _getPostPreviewsQueryHandler.HandleAsync(new GetPostPreviewQuery(skip));
+            var posts = await _getPostPreviewsQueryHandler.HandleAsync(new GetPostPreviewQuery(skip, take));
             return posts;
         }
 

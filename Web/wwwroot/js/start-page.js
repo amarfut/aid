@@ -14,16 +14,8 @@
 function AppViewModel() {
     let self = this;
     self.posts = ko.observableArray([]);
-    self.morePostsButtonVisible = ko.observable(false);
+    self.morePostsButtonVisible = ko.observable(true);
     self.endPostsTextVisible = ko.observable(false);
-
-    self.like = function (post) {
-        self.setReaction(post.id, true);
-    };
-
-    self.dislike = function (post) {
-        self.setReaction(post.id, false);
-    };
 
     self.showComments = function (post) {
         return post.postUrl + '#begin-comments';
@@ -49,7 +41,7 @@ function AppViewModel() {
     };
 
     self.addPosts = function () {
-        let skip = self.posts().length;
+        let skip = 21 + self.posts().length;
         self.morePostsButtonVisible(false);
 
         $.get('/home/loadposts?skip=' + skip, function (posts) {
@@ -62,7 +54,5 @@ function AppViewModel() {
             }
         });
     };
-
-    self.addPosts();
 }
 ko.applyBindings(new AppViewModel());

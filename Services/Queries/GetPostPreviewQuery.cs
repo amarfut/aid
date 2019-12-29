@@ -10,6 +10,12 @@ namespace Services.Queries
     {
         public int Skip { get; set; }
 
-        public GetPostPreviewQuery(int skip) => Skip = skip;
+        public int Take { get; set; }
+
+        public GetPostPreviewQuery(int skip, int take)
+        {
+            Skip = skip;
+            Take = take;
+        }
     }
 }

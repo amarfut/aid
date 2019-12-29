@@ -40,15 +40,17 @@ namespace Web.Controllers
 
         private const string userCookieId = "_yId";
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             ViewBag.Title = "YouIT - программирование и карьера в IT";
-            return View();
+
+            var posts = await _postService.GetPostPreviews(0, 21);
+            return View(posts);
         }
 
         public async Task<IEnumerable<PostPreviewDto>> LoadPosts(int skip)
         {
-            return await _postService.GetPostPreviews(skip);
+            return await _postService.GetPostPreviews(skip, 10);
         }
 
         public async Task<IEnumerable<PostPreviewDto>> LoadSimilarPosts(PostType type)

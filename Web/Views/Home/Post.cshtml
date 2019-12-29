@@ -72,7 +72,7 @@
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <!-- youit_article_mid -->
             <ins class="adsbygoogle"
-                 style="display:inline-block;min-width:400px;max-width:728px;width:100%;height:90px"
+                 style="display:inline-block;min-width:300px;max-width:728px;width:100%;height:90px"
                  data-ad-client="ca-pub-4128223586304442"
                  data-ad-slot="1103265665"></ins>
             <script>
@@ -86,11 +86,13 @@
             @Html.Raw(Model.Text)
         }
 
+    <div style="margin-bottom:20px;">
         @for (int i = 0; i < Model.Tags.Length; i++)
         {
             <a href="/tags/@Model.Tags[i].Name" class="post-tag">@Model.Tags[i].Display</a>
-          
         }
+    </div>
+        
 
         <script class="_iub_cs_activate" type="text/plain" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
         </script>

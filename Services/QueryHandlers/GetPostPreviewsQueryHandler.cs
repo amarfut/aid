@@ -19,7 +19,7 @@ namespace Services.QueryHandlers
             var postsPreviews = await _db.Posts.AsQueryable()
                 .OrderByDescending(x => x.Created)
                 .Skip(query.Skip)
-                .Take(10).ToListAsync();
+                .Take(query.Take).ToListAsync();
 
             return postsPreviews.Select(p => new PostPreviewDto(p)).ToList();
         }
