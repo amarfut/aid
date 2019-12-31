@@ -41,7 +41,7 @@ function AppViewModel() {
     };
 
     self.addPosts = function () {
-        let skip = 21 + self.posts().length;
+        let skip = 20 + self.posts().length;
         self.morePostsButtonVisible(false);
 
         $.get('/home/loadposts?skip=' + skip, function (posts) {

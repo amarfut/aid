@@ -1,9 +1,32 @@
 ﻿@model IEnumerable<Services.DTOs.PostPreviewDto>
 
+@{
+    int i = 0;
+}
+
 @foreach (var post in Model)
 {
+    if (i == 5)
+    {
+        <div class="box content">
+            <script class="_iub_cs_activate" type="text/plain" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+            </script>
+            <ins class="adsbygoogle"
+                 style="display:block;height:320px;"
+                 data-ad-format="fluid"
+                 data-ad-layout-key="-6n+di+2f-4s+89"
+                 data-ad-client="ca-pub-4128223586304442"
+                 data-ad-slot="3742226663"></ins>
+            <script class="_iub_cs_activate" type="text/plain">
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    }
+
+    i++;
+
     string previewImageUrl = "https://storage.googleapis.com/youit/images/" + post.Url + ".png";
- 
+
     <div class="box content">
         <a href="/post/@post.Url"> <img alt="@post.Title" src="@previewImageUrl" style="max-width:100%" /> </a>
         <div class="post-button-wrapper">
@@ -15,6 +38,8 @@
         <a href="/post/@post.Url"><h3>@post.Title</h3></a>
     </div>
 }
+
+
 
 <!-- ko foreach: posts -->
 <div class="box content">

@@ -44,7 +44,7 @@ namespace Web.Controllers
         {
             ViewBag.Title = "YouIT - программирование и карьера в IT";
 
-            var posts = await _postService.GetPostPreviews(0, 21);
+            var posts = await _postService.GetPostPreviews(0, 20);
             return View(posts);
         }
 
