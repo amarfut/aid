@@ -20,6 +20,12 @@ namespace Web.Controllers
                 var post = await postService.GetPost("dotnetweb");
                 return View("DotNetWeb", post);
             }
+            else if (id == "dotnetweb_en")
+            {
+                var post = await postService.GetPost("dotnetweb");
+                return View("DotNetWebEnglish", post);
+            }
+
 
 
             return View();

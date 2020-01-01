@@ -12,6 +12,12 @@
 
 }
 
+.lang {
+    font-size: 25px;
+    margin-bottom: 35px;
+    color: #9b9b9b;
+}
+
 i.fa-circle {
 color:#909090;
 }

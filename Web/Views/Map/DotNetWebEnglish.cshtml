@@ -90,7 +90,7 @@
             Knowledge Map for .NET Web developer
         </h1>
         <div class="descr">
-            A detailed knowledge map for .NET Web developers from Trainee to Senior.<br/> Use for self-study, finding knowledge gaps, creating training programs, preparing for job interviews and career advancements.
+            A detailed knowledge map for .NET Web developers from Trainee to Senior.<br /> Use for self-study, identifying knowledge gaps, creating training programs,<br/> preparing for job interviews and career advancements.
         </div>
 
         <div class="info">
@@ -106,6 +106,10 @@
 
 
     <div class="main-content">
+        <div class="lang">
+            <a href="/map/dotnetweb">Русский</a> | English
+        </div>
+
         <div style=" float:left; margin-top:-8px;">
             <a href="/"><img src="@Helper.GetImageUrl("logo.png")" alt="YouIT" /></a>
         </div>
@@ -3256,129 +3260,180 @@
             <tbody>
                 <tr>
                     <td><i class="map fas fa-star"></i></td>
-                    <td>Концепция нормализации данных, Нормальные формы</td>
+                    <td>Normalization, Normal Forms</td>
                     <td>
-                        <a href="https://habr.com/ru/post/254773/">Нормализация отношений. Шесть нормальных форм</a> <i class="map fas fa-circle"></i>
-                        <a href="https://support.microsoft.com/en-us/help/283878/description-of-the-database-normalization-basics">Описание основных приемов нормализации базы данных</a>
+                        <a href="https://support.microsoft.com/en-us/help/283878/description-of-the-database-normalization-basics">
+                            Description of the database normalization basics
+                        </a>
                     </td>
                 </tr>
                 <tr>
                     <td><i class="map fas fa-star"></i></td>
-                    <td>Создание таблиц, Выбор типов данных</td>
+                    <td>Creating tables, MS SQL data types</td>
                     <td>
-                        <a href="https://docs.microsoft.com/en-us/sql/relational-databases/tables/create-tables-database-engine?view=sql-server-ver15">Создание таблиц</a> <i class="map fas fa-circle"></i>
-                        <a href="https://docs.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver15">Типы данных</a>
+                        <a href="https://docs.microsoft.com/en-us/sql/relational-databases/tables/create-tables-database-engine?view=sql-server-ver15">Create Tables</a> <i class="map fas fa-circle"></i>
+                        <a href="https://docs.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver15">Data Types</a>
                     </td>
                 </tr>
                 <tr>
                     <td><i class="map fas fa-star"></i></td>
-                    <td> Создание ограничений: NOT NULL, UNIQUE, CHECK, DEFAULT, PRIMARY KEY, FOREIGN KEY</td>
+                    <td> Constraints: NOT NULL, UNIQUE, CHECK, DEFAULT, PRIMARY KEY, FOREIGN KEY</td>
                     <td>
-                        <a href="https://docs.microsoft.com/en-us/sql/relational-databases/tables/unique-constraints-and-check-constraints?view=sql-server-ver15">Ограничения уникальности и проверочные ограничения</a>
+                        <a href="https://docs.microsoft.com/en-us/sql/relational-databases/tables/unique-constraints-and-check-constraints?view=sql-server-ver15">
+                            Unique Constraints and Check Constraints
+                        </a>
                     </td>
                 </tr>
                 <tr>
                     <td><i class="map fas fa-star"></i></td>
-                    <td>Моделирование отношений: один к одному, один ко многим, многие ко многим, Primary Key & Foreign Key</td>
+                    <td>Modeling One-to-One, One-to-Many, Many-to-Many relationships | Primary Key & Foreign Key</td>
                     <td>
-                        <a href="http://office-menu.ru/uroki-sql/41-tipy-svyazej-v-relyatsionnykh-bazakh-dannykh">Типы связей в реляционных базах данных</a>
+                        <a href="https://www.tech-recipes.com/rx/56738/one-to-one-one-to-many-table-relationships-in-sql-server/">
+                            One-to-One, One-to-Many Table Relationships in SQL Server
+                        </a>
+                        <i class="map fas fa-circle"></i>
+                        <a href="https://docs.microsoft.com/en-us/sql/relational-databases/tables/create-foreign-key-relationships?view=sql-server-ver15">
+                            Create Foreign Key Relationships
+                        </a>
+
                     </td>
                 </tr>
                 <tr>
                     <td><i class="map fas fa-star"></i></td>
-                    <td>Working with оператором SELECT, Использование операторов WHERE, INNER/LEFT/RIGHT/CROSS JOIN, GROUP BY, HAVING, DISTINCT</td>
+                    <td>Working with  SELECT statement, Using WHERE, INNER/LEFT/RIGHT/CROSS JOIN, GROUP BY, HAVING, DISTINCT</td>
                     <td>
-                        <a href="https://docs.microsoft.com/en-us/sql/t-sql/queries/select-examples-transact-sql?view=sql-server-ver15">Примеры использования инструкции SELECT</a> <i class="map fas fa-circle"></i>
-                        <a href="http://www.sql-tutorial.ru/ru/book_having_clause.html">Предложение HAVING</a> <i class="map fas fa-circle"></i>
-                        <a href="http://www.sql-tutorial.ru/ru/book_group_by_clause.html">Предложение GROUP BY</a>
+                        <a href="https://docs.microsoft.com/en-us/sql/t-sql/queries/select-examples-transact-sql?view=sql-server-ver15">SELECT Examples </a>
+                        <i class="map fas fa-circle"></i>
+                        <a href="https://www.sqlservertutorial.net/sql-server-basics/sql-server-select/">
+                            SQL Server SELECT
+                        </a>
                     </td>
                 </tr>
                 <tr>
                     <td><i class="map fas fa-star"></i></td>
-                    <td>Работа агрегатными функциями: SUM, MIN, MAX, AVG, COUNT</td>
+                    <td>Working with aggregate functions: SUM, MIN, MAX, AVG, COUNT</td>
                     <td>
-                        <a href="https://www.sql.ru/docs/sql/u_sql/ch6.shtml">Обобщение данных с помощью агрегатных функций</a>
+                        <a href="https://www.sqlservertutorial.net/sql-server-aggregate-functions/">
+                            SQL Server Aggregate Functions
+                        </a>
                     </td>
                 </tr>
                 <tr>
                     <td><i class="map fas fa-star"></i></td>
-                    <td>Модификация данных с использованием INSERT, UPDATE, DELETE операторов</td>
+                    <td>Data modification with INSERT, UPDATE, DELETE, TRUNCATE statements</td>
                     <td>
-                        <a href="https://habr.com/ru/post/255523/">Учебник по языку SQL (DDL, DML) на примере диалекта MS SQL Server. Часть вторая</a> <i class="map fas fa-circle"></i>
-                        <a href="http://www.quizful.net/interview/sql/delete-truncate-difference">SQL команды DELETE и TRUNCATE</a>
+                        <a href="https://www.pluralsight.com/guides/manipulating-data-using-insert-update-delete-sql-server">
+                            Manipulating Data Using Insert, Update, and Delete in SQL Server
+                        </a>
+                        <i class="map fas fa-circle"></i>
+                        <a href="https://www.mssqltips.com/sqlservertip/4248/differences-between-delete-and-truncate-in-sql-server/">
+                            Differences between Delete and Truncate in SQL Server
+                        </a>
                     </td>
                 </tr>
                 <tr>
                     <td><i class="map fas fa-star"></i><i class="map fas fa-star"></i></td>
-                    <td>Working with операторами UNION, UNION ALL, INTERSECT, EXCEPT</td>
+                    <td>Working with UNION, UNION ALL, INTERSECT, EXCEPT statements</td>
                     <td>
                         <a href="http://www.manifold.net/doc/radian/union___except___intersect.htm">UNION / EXCEPT / INTERSECT</a>
                     </td>
                 </tr>
                 <tr>
                     <td><i class="map fas fa-star"></i><i class="map fas fa-star"></i></td>
-                    <td>Working with хранимыми процедурами, функциями и триггерами</td>
+                    <td>Working with stored-procedures, user-defined functions and triggers | Trigger types</td>
                     <td>
-                        <a href="https://ivan-shamaev.ru/t-sql-fundamentals-and-examples/">Основы T-SQL и примеры — функции (UDF), триггеры, процедуры, курсоры, циклы</a>
-
+                        <a href="https://www.c-sharpcorner.com/article/stored-procedures-vs-user-defined-functions-and-choosing-which-one-to-use/">
+                            Stored Procedures Vs User Defined Functions And Choosing Which One To Use
+                        </a>
+                        <i class="map fas fa-circle"></i>
+                        <a href="https://codingsight.com/sql-server-triggers-understanding-alternatives/">
+                            SQL Server Triggers: Understanding and Alternatives
+                        </a>
                     </td>
                 </tr>
                 <tr>
                     <td><i class="map fas fa-star"></i><i class="map fas fa-star"></i></td>
-                    <td>Использование SQL профайлера</td>
+                    <td>Using SQL Profiler</td>
                     <td>
-                        <a href="https://ausevich.ru/subd/rabota-s-profiler-sql-server-primery-nastrojki-trassirovok/">Working with SQL SERVER PROFILER. ПРИМЕРЫ НАСТРОЙКИ ТРАССИРОВОК</a>
+                        <a href="https://ausevich.ru/subd/rabota-s-profiler-sql-server-primery-nastrojki-trassirovok/">
+                            What is SQL Server Profiler? How It Works, Best Practices, Tutorials
+                        </a>
                     </td>
                 </tr>
                 <tr>
                     <td><i class="map fas fa-star"></i><i class="map fas fa-star"></i></td>
-                    <td>Кластерные и некластерные индексы</td>
+                    <td>Clustered and Non-Clustered Indexes</td>
                     <td>
-                        <a href="https://docs.microsoft.com/en-us/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15">Описания кластеризованных и некластеризованных индексов</a> <i class="map fas fa-circle"></i>
-                        <a href="https://habr.com/ru/post/247373/">14 вопросов об индексах в SQL Server, которые вы стеснялись задать</a>
+                        <a href="https://docs.microsoft.com/en-us/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15">
+                            Clustered and Nonclustered Indexes Described
+                        </a> <i class="map fas fa-circle"></i>
+                             <a href="https://www.giantstride.gr/sql-indexing-part2/">
+                                 SQL Indexing and SQL Performance Part 2: Clustered and Non-Clustered
+                             </a>
                     </td>
                 </tr>
                 <tr>
                     <td><i class="map fas fa-star"></i><i class="map fas fa-star"></i></td>
                     <td>SQL vs NoSQL</td>
                     <td>
-                        <a href="https://habr.com/ru/company/ruvds/blog/324936/">SQL или NoSQL — вот в чём вопрос</a>
+                        <a href="https://www.guru99.com/sql-vs-nosql.html">SQL vs NoSQL: What's the difference?</a>
                     </td>
                 </tr>
                 <tr>
                     <td><i class="map fas fa-star"></i><i class="map fas fa-star"></i><i class="map fas fa-star"></i></td>
-                    <td>Необходимость денормализации, Техники денормализации данных</td>
+                    <td>Normalization vs Denormalization | Denormalization techniques in SQL</td>
                     <td>
-                        <a href="https://habr.com/ru/post/64524/">Денормализация БД. Зачем? Когда? Как?</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><i class="map fas fa-star"></i><i class="map fas fa-star"></i><i class="map fas fa-star"></i></td>
-                    <td>Working with оконными функциями: OVER, ROW_NUMBER, RANK, NTILE...</td>
-                    <td>
-                        <a href="http://www.sql-tutorial.ru/ru/book_window_functions.html">Оконные функции</a> <i class="map fas fa-circle"></i>
-                        <a href="https://www.fastreport.ru/ru/blog/251/show/">Оконные функции – то, что должен знать каждый T-SQL программист</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><i class="map fas fa-star"></i><i class="map fas fa-star"></i><i class="map fas fa-star"></i></td>
-                    <td>Working with СTE, Рекурсивные CTE</td>
-                    <td>
-                        <a href="http://www.sql-tutorial.ru/ru/book_common_table_expressions_cte.html">Общие табличные выражения</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><i class="map fas fa-star"></i><i class="map fas fa-star"></i><i class="map fas fa-star"></i></td>
-                    <td>Анализ плана выполнения запроса: Nested Loops, Index Seek, Index Scan, Key, Lookup...</td>
-                    <td>
-                        <a href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/display-an-actual-execution-plan?view=sql-server-ver15">Отображение действительного плана выполнения</a>
+                        <a href="https://techdifferences.com/difference-between-normalization-and-denormalization.html">
+                            Difference Between Normalization and Denormalization
+                        </a>
                         <i class="map fas fa-circle"></i>
-                        <a href="http://sql-ex.ru/blogs/optimization/exploring_query_plans_in_sql.html">Изучение плана запроса в SQL</a>
+                        <a href="https://rubygarage.org/blog/database-denormalization-with-examples">
+                            When and How You Should Denormalize a Relational Database
+                        </a>
                     </td>
                 </tr>
                 <tr>
                     <td><i class="map fas fa-star"></i><i class="map fas fa-star"></i><i class="map fas fa-star"></i></td>
-                    <td>Working with транзакциями, ACID, Уровни изоляций транзакций, Snapshot, Мертвые блокировки</td>
+                    <td>Working with Window Functions: OVER, ROW_NUMBER, RANK, NTILE...</td>
+                    <td>
+                        <a href="https://www.sqlservertutorial.net/sql-server-window-functions/">
+                            SQL Server Window Functions
+                        </a>
+                        <i class="map fas fa-circle"></i>
+                        <a href="https://www.red-gate.com/simple-talk/sql/t-sql-programming/t-sql-window-functions-and-performance/">
+                            T-SQL Window Functions and Performance
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><i class="map fas fa-star"></i><i class="map fas fa-star"></i><i class="map fas fa-star"></i></td>
+                    <td>Working with СTE, Recursive CTE</td>
+                    <td>
+                        <a href="https://chartio.com/resources/tutorials/using-common-table-expressions/">
+                            Common Table Expressions: When and How to Use Them
+                        </a>
+                        <i class="map fas fa-circle"></i>
+                        <a href="https://www.sqlshack.com/sql-server-common-table-expressions-cte/">
+                            What is a Common Table Expression
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><i class="map fas fa-star"></i><i class="map fas fa-star"></i><i class="map fas fa-star"></i></td>
+                    <td>Query Execution Plan Analysis: Nested Loops, Index Seek, Index Scan, Key, Lookup...</td>
+                    <td>
+                        <a href="https://www.sqlshack.com/using-the-sql-execution-plan-for-query-performance-tuning/">
+                            Using the SQL Execution Plan for Query Performance Tuning
+                        </a>
+                        <i class="map fas fa-circle"></i>
+                        <a href="https://docs.microsoft.com/en-us/sql/relational-databases/performance/display-an-actual-execution-plan?view=sql-server-ver15">
+                            Display an Actual Execution Plan
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><i class="map fas fa-star"></i><i class="map fas fa-star"></i><i class="map fas fa-star"></i></td>
+                    <td>Working with transactions, ACID, Transaction Isolation Levels, Snapshot, Deadlocks</td>
                     <td>
                         <a href="https://www.tutorialspoint.com/t_sql/t_sql_transactions.htm">T-SQL - Transactions</a>
                         <i class="map fas fa-circle"></i>
@@ -3398,18 +3453,18 @@
 
         <h3>Test Questions:</h3>
         <ul>
-            <li>Какие нормальные формы Вам знакомы?</li>
-            <li>Сравните нормализацию и денормализацию баз данных.</li>
-            <li>Как моделируется отношение "многие ко многим" в MS SQL?</li>
-            <li>В чем разница между Primary Key и Foreign Key?</li>
-            <li>В чем разница между операторами LEFT JOIN vs INNER JOIN?</li>
-            <li>В чем разница между операторами CROSS JOIN и CROSS APPLY?</li>
-            <li>В чем отличия Кластерных индексов от Некластерных?</li>
-            <li>Для чего применяется оператор INCLUDE при создании некластерного индекса?</li>
-            <li>Какие уровни изоляций транзакций существуют?</li>
-            <li>Опишите свойства ACID.</li>
-            <li>Как избегать мертвых блокировок при работе с транзакциями?</li>
-            <li>В чем разница между временными таблицами и CTE?</li>
+            <li>What Normal Forms do you know?</li>
+            <li>Compare Normalization and Denormalization of databases.</li>
+            <li>How is the many-to-many relationship modeled in MS SQL?</li>
+            <li>What is the difference between Primary Key and Foreign Key?</li>
+            <li>What is the difference between LEFT JOIN vs INNER JOIN statements?</li>
+            <li>What is the difference between CROSS JOIN and CROSS APPLY?</li>
+            <li>What are the differences between Cluster and Noncluster Indexes?</li>
+            <li>Why use the INCLUDE operator when creating a non-clustered index?</li>
+            <li>What Transaction Isolation Levels exist?</li>
+            <li>Describe the ACID properties.</li>
+            <li>How to avoid deadlocks when working with transactions?</li>
+            <li>What is the difference between temporary tables and CTE?</li>
         </ul>
 
 
@@ -3428,58 +3483,77 @@
             <tbody>
                 <tr>
                     <td><i class="map fas fa-star-half-alt"></i></td>
-                    <td>Понимание необходимости систем контроля версий</td>
+                    <td>Understanding the purpose of Version Control Systems</td>
                     <td>
-                        <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F_%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F%D0%BC%D0%B8">Система управления версиями</a> <i class="map fas fa-circle"></i>
-                        <a href="https://ru.hexlet.io/courses/git_base/lessons/vcs_intro/theory_unit">Введение в системы контроля версий</a>
+                        <a href="http://guides.beanstalkapp.com/version-control/intro-to-version-control.html">
+                            An introduction to version control
+                        </a>
+                        <i class="map fas fa-circle"></i>
+                        <a href="https://www.atlassian.com/git/tutorials/comparing-workflows">
+                            Comparing Workflows
+                        </a>
                     </td>
                 </tr>
                 <tr>
                     <td><i class="map fas fa-star"></i></td>
-                    <td>Понимание разницы между централизованными и распределенными системами контроля версий</td>
+                    <td>Centralized vs Distributed Version Control Systems</td>
                     <td>
-                        <a href="https://www.codengineering.ru/q/comparison-between-centralized-and-distributed-version-control-systems-10518/">Сравнение централизованных и распределенных систем управления версиями</a>
+                        <a href="https://www.teamstudio.com/blog/distributed-vs-centralized-version-control-systems-for-lotus-notes">
+                            Centralized vs Distributed Version Control Systems - What's Best for Notes Development?
+                        </a>
                     </td>
                 </tr>
                 <tr>
                     <td><i class="map fas fa-star"></i></td>
-                    <td>Жизненный цикл в Git</td>
+                    <td>Understanding Git Life Cycle</td>
                     <td>
-                        <a href="https://proselyte.net/tutorials/git/git_life_cycle/">Руководство по Git. Жизненный цикл Git.</a>
+                        <a href="https://www.tutorialspoint.com/git/git_life_cycle.htm">
+                            Git - Life Cycle
+                        </a>
+                        <i class="map fas fa-circle"></i>
+                        <a href="https://www.toolsqa.com/git/git-life-cycle/">
+                            Git Life Cycle
+                        </a>
                     </td>
                 </tr>
                 <tr>
                     <td><i class="map fas fa-star"></i></td>
-                    <td>Working with Git, Понимание ключевых терминов: repositoty, branch, commit, push, tag, pull request, merge, revert, stage, blame...</td>
+                    <td>Working with Git, Understanding key concepts: repositoty, branch, commit, push, tag, pull request, merge, revert, stage, blame...</td>
                     <td>
                         <a href="https://www.atlassian.com/git/tutorials">Git tutorial. Become a git guru.</a>
                     </td>
                 </tr>
                 <tr>
                     <td><i class="map fas fa-star"></i><i class="map fas fa-star"></i></td>
-                    <td>Понимание Git Flow</td>
+                    <td>Understanding Git Flow</td>
                     <td>
-                        <a href="https://habr.com/ru/post/346066/">GitHub Flow</a> <i class="map fas fa-circle"></i>
                         <a href="https://datasift.github.io/gitflow/IntroducingGitFlow.html">Introducing GitFlow</a>
                     </td>
                 </tr>
                 <tr>
                     <td><i class="map fas fa-star"></i><i class="map fas fa-star"></i></td>
-                    <td>Working with ветками, стратегии "бранчевания"</td>
+                    <td>Working with branches | Git Branching Strategies</td>
                     <td>
-                        <a href="https://bool.dev/blog/detail/git-branching-strategies">Branching стратегии в Git</a>
+                        <a href="https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell">
+                            3.1 Git Branching - Branches in a Nutshell
+                        </a>
+                        <i class="map fas fa-circle"></i>
+
+                        <a href="https://www.nebbiatech.com/2019/03/15/git-branching-strategies-which-one-should-i-pick/">
+                            Git Branching Strategies: which one should I pick?
+                        </a>
                     </td>
                 </tr>
                 <tr>
                     <td><i class="map fas fa-star"></i><i class="map fas fa-star"></i><i class="map fas fa-star"></i></td>
-                    <td>Понимание merge-стратегий: merge commit, merge squash, fast-forward merge, rebase</td>
+                    <td>Git merge-strategies: merge commit, merge squash, fast-forward merge, rebase</td>
                     <td>
                         <a href="https://confluence.atlassian.com/bitbucketserver/pull-request-merge-strategies-844499235.html">Pull request merge strategies</a>
                     </td>
                 </tr>
                 <tr>
                     <td><i class="map fas fa-star"></i><i class="map fas fa-star"></i><i class="map fas fa-star"></i></td>
-                    <td>Миграция на Git с других систем контроля версий</td>
+                    <td>Migration to Git</td>
                     <td>
                         <a href="https://www.atlassian.com/git/tutorials/svn-to-git-prepping-your-team-migration">SVN to Git - prepping for the migration</a>
                     </td>
@@ -3489,15 +3563,13 @@
 
         <h3>Test Questions:</h3>
         <ul>
-            <li>В чем разница между централизованными и распределенными системами контроля версий?</li>
-            <li>В чем разница между командами git fetch и git pull в Git?</li>
-            <li>В чем разница между merge commit и merge squash в Git?</li>
-            <li>Что такое cherry-pick в Git?</li>
-            <li>Для чего применяются теги в Git?</li>
-            <li>Для чего применяются пул-риквесты в Git?</li>
+            <li>What is the difference between Centralized and Distributed Version Control Systems?</li>
+            <li>What is the difference between git fetch and git pull commands in Git?</li>
+            <li>What is the difference between merge commit and merge squash in Git?</li>
+            <li>What is cherry-pick in Git?</li>
+            <li>What are git tags used for?</li>
+            <li>What are Pull Requests in Git used for?</li>
         </ul>
-
-
 
 
         <a name="process"></a>
