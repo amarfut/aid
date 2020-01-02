@@ -14,7 +14,7 @@ namespace Web.Controllers
         public async Task<IActionResult> Map(string id)
         {
             var postService = new PostService();
-            
+
             if (id == "dotnetweb")
             {
                 var post = await postService.GetPost("dotnetweb");
@@ -25,6 +25,11 @@ namespace Web.Controllers
                 var post = await postService.GetPost("dotnetweb");
                 return View("DotNetWebEnglish", post);
             }
+            //else if (id == "javascript")
+            //{
+            //    var post = await postService.GetPost("dotnetweb");
+            //    return View("JavaScript", post);
+            //}
 
 
 

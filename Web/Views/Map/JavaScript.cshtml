@@ -1,0 +1,328 @@
+﻿@model Services.DTOs.PostDto
+@using Web.Utils;
+@using Microsoft.AspNetCore.Http.Features
+
+@{
+    Layout = null;
+
+    string url = "https://youit.pro/map/dotnetweb";
+
+    string twitter = "http://twitter.com/share?text=Карта знаний JavaScript программиста&url=" + url;
+
+    var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
+    var cookieString = consentFeature?.CreateConsentCookie();
+
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouIT - Карта знаний .NET Web программиста</title>
+
+    <link rel="stylesheet" href="~/css/km-style.css" />
+    <link rel="stylesheet" href="~/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/comments.css" />
+    <link rel="stylesheet" href="~/css/authorize.css" />
+
+    <meta name="keywords" content="Программирование, IT, код, собеседование, тестирование, ООП, Junior, Senior, Аутсорсинг, Алгоритмы, Веб-сервер" />
+    <meta name="description" content="Детализированная карта знаний для JavaScript программистов от Trainee до Senior. Используйте для самообучения, поиска пробелов в знаниях, создания программ обучения, подготовки к собеседованиям и продвижениям по карьерной лестнице.">
+
+    <meta property="og:title" content="YouIT">
+    <meta property="og:description" content="Детализированная карта знаний для JavaScript программистов от Trainee до Senior. Используйте для самообучения, поиска пробелов в знаниях, создания программ обучения, подготовки к собеседованиям и продвижениям по карьерной лестнице.">
+
+    <meta property="og:image" content="https://storage.googleapis.com/youit/images/dotnetweb.png">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:width" content="315">
+    <meta property="og:url" content="https://youit.pro/map/dotnetweb">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="YouIT - Карта знаний JavaScript программиста">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="icon" href="/favicon-32x32.png">
+    <link rel="icon" href="/favicon-16x16.png">
+    <link rel="icon" href="/favicon.ico">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script class="_iub_cs_activate" type="text/plain" async suppressedsrc="https://www.googletagmanager.com/gtag/js?id=UA-99938281-2">
+    </script>
+    <script class="_iub_cs_activate-inline" type="text/plain">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-99938281-2');
+    </script>
+
+
+    <script type="text/javascript">
+                var _iub = _iub || [];
+                _iub.csConfiguration = {
+                    "lang": "ru",
+                    "siteId": 1742269,
+                    "cookiePolicyId": 11210594,
+                    "consentOnContinuedBrowsing": false,
+                    "cookiePolicyUrl": "https://youit.pro/privacy",
+                    "banner": {
+                        "acceptButtonDisplay": true,
+                        "position": "bottom"
+                    },
+                    callback: {
+                        onConsentRead: function () {
+                            document.cookie = '@cookieString';
+                        }
+                    }
+                };
+    </script>
+
+</head>
+<body>
+
+
+    <div id="header">
+
+        <h1>
+            Карта знаний JavaScript программиста
+        </h1>
+        <div class="descr">
+            Детализированная карта знаний для JavaScript программистов от Trainee до Senior.<br />
+            Используйте для самообучения, поиска пробелов в знаниях, создания программ обучения,<br /> подготовки к собеседованиям и продвижениям по карьерной лестнице.
+        </div>
+
+        <div class="info">
+            <i class="map far fa-calendar-alt"></i> Обновлено 2 января 2019 &nbsp;&nbsp;&nbsp;
+            <span style="color: rgb(183, 183, 183)">Поделиться:</span>&nbsp;
+            <a href="https://www.facebook.com/sharer/sharer.php?u=@url"><i class="map fab fa-facebook-square"></i></a> &nbsp;
+            <a href="@twitter"><i class="map fab fa-twitter-square"></i></a> &nbsp;
+            <a href="https://vk.com/share.php?url=@url"><i class="map fab fa-vk"></i></a> &nbsp;
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=@url"><i class="map fab fa-linkedin"></i></a> &nbsp;
+        </div>
+    </div>
+   
+
+
+    <div class="main-content">
+       
+
+        <div style=" float:left; margin-top:-8px;">
+            <a href="/"><img src="@Helper.GetImageUrl("logo.png")" alt="YouIT" /></a>
+        </div>
+
+        <div style="margin-bottom:20px; float:right;">
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <span>Привет,</span> <a href="/profile/"><b>@User.Identity.Name</b></a>
+                <a asp-controller="account" asp-action="signOut"><i class="map fas fa-sign-out-alt"></i></a>
+                <br /><a href="#gotocomments">Перейти к комментариям</a>
+            }
+            else
+            {
+                <span onclick="loadAuthorizeModal()" class="login-link">
+                    <i class="map fas fa-sign-in-alt"></i> Войти
+                </span>
+            }
+        </div>
+
+        <a name="top"></a>
+        <table id="map">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Trainee</th>
+                    <th>Junior</th>
+                    <th>Middle</th>
+                    <th>Senior</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="#jscore">Язык программирования JavaScript</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><a href="#jscore">JavaScript и Браузеры</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><a href="#jscore">SPA Фреймворки: React.js, Angular.js, Vue.js</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><a href="#jscore">HTML & HTML5 / CSS & CSS3</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><a href="#jscore">Контроль качества кода / Рефакторинг</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><a href="#jscore">Алгоритмы и Структуры Данных</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><a href="#jscore">Принципы объектно-ориентированного программирования (ООП)</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><a href="#jscore">Шаблоны и принципы проектирования, SOLID</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><a href="#jscore">Архитектурные шаблоны и Атрибуты качества (Quality Attributes)</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><a href="#jscore">Веб-безопасность, Шифрование данных, OWASP</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><a href="#jscore"> Системы контроля версий: Git, Mercurial, TFS</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><a href="#jscore">Методологии разработки: Scrum, Kanban и Scrumban</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><a href="#jscore">Модульное и интеграционное тестирование</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+
+            </tbody>
+        </table>
+
+
+
+   
+
+
+        <br />
+        <a name="jscore"></a>
+        <h2>Язык программирования JavaScript</h2>  <a href="#top"><i class="map fas fa-arrow-circle-up"></i></a>
+        <table class="details">
+            <thead>
+                <tr>
+                    <th>Уровень</th>
+                    <th>Темы</th>
+                    <th>Материалы</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+      
+        <h3>Контрольные вопросы:</h3>
+        <ul>
+            <li></li>
+        </ul>
+
+
+
+
+
+
+
+
+
+        <a name="gotocomments"></a>
+        <div style="width:70%;">
+            @await Html.PartialAsync("_PostComments", Model)
+        </div>
+
+
+
+        <script>
+            loadAuthorizeModal = () => {
+                $('#authorizeModal').modal('show');
+            }
+        </script>
+
+        <script type="text/javascript" src="//cdn.iubenda.com/cs/stable/iubenda_cs.js" charset="UTF-8" async></script>
+
+        @await Html.PartialAsync("_Authorize")
+
+
+    </div>
+
+</body>
+</html>
