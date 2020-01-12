@@ -260,8 +260,10 @@ h3 {
     overflow: hidden;
 }
 
+
 .tag-link {
-   font-size:17px; color:#0c5ba7;
+    font-size: 17px;
+    color: #0c5ba7;
 }
 
 .subscribeBar {
