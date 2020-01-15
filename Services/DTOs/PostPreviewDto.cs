@@ -22,10 +22,12 @@ namespace Services.DTOs
             LikesCount = post.WhoLiked.Length;
             DislikesCount = post.WhoDisliked.Length;
             Created = post.Created;
+            Description = post.Description;
         }
 
         public string Id { get; set; }
         public string Title { get; set; }
+        public string Description { get; set; }
         public string Url { get; set; }
         public string TextPreview { get; set; }
         public int ViewsCount { get; set; }

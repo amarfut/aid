@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Services.DTOs.PostPreviewDto>
+@using Web.Utils
 
 @{
     int i = 0;
@@ -8,7 +9,7 @@
 {
     if (i == 3)
     {
-        <div class="box content">
+        @*<div class="box content">
             <script class="_iub_cs_activate" type="text/plain" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
             </script>
             <ins class="adsbygoogle"
@@ -20,22 +21,28 @@
             <script class="_iub_cs_activate" type="text/plain">
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
-        </div>
+        </div>*@
     }
 
     i++;
 
-    string previewImageUrl = "https://storage.googleapis.com/youit/images/" + post.Url + ".png";
+    string previewImageUrl = "https://storage.googleapis.com/youit/images/" + post.Url + "_mini.png";
 
-    <div class="box content">
-        <a href="/post/@post.Url"> <img alt="@post.Title" src="@previewImageUrl" style="max-width:100%" /> </a>
-        <div class="post-button-wrapper">
-            <div><i class="far fa-eye"></i> <span>@post.ViewsCount</span></div>
-            <div><i class="far fa-comment"></i> <span>@post.CommentsCount</span></div>
-            <div><i class="far fa-thumbs-up"></i> <span>@post.LikesCount</span></div>
-            <div><i class="far fa-thumbs-down"></i> <span>@post.DislikesCount</span></div>
-        </div>
-        <a href="/post/@post.Url"><h3>@post.Title</h3></a>
+    <div style="padding-bottom:30px;">
+        <a href="/post/@post.Url"><h1>@post.Title</h1></a>
+
+        <a href="/post/@post.Url"> <img alt="@post.Title" src="@previewImageUrl" style="float:left; margin-right:10px;" /> </a>
+        @post.Description
+
+    <div style="padding-top:10px; color:#808080;">
+        <i class="far fa-eye"></i> <span>@post.ViewsCount</span> &nbsp;
+        <i class="far fa-comment"></i> <span>@post.CommentsCount</span>&nbsp;
+        <i class="far fa-thumbs-up"></i> <span>@post.LikesCount</span>&nbsp;
+        <i class="far fa-thumbs-down"></i> <span>@post.DislikesCount</span>&nbsp;
+        | &nbsp;<span>Добавлено @Helper.GetRelativeTime(post.Created)</span>
+    </div>
+
+
     </div>
 }
 

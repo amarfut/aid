@@ -104,51 +104,67 @@
         -->
 
     </div>
-    <div class="wrapper">
-        <div class="box top-menu">
-            <div class="nav">
-                <div class="logo">
+
+
+    <div style="margin: 0 auto;
+            max-width: 90%;
+            display:grid;
+            grid-template-columns: 55% 22.5% 22.5%;
+           grid-gap: 1em;">
+
+        <div class="t-header" style="grid-column: 1 / span 3; ">
+
+
+            <div style="display:grid; grid-template-columns:1fr 3fr 2fr 1fr;">
+                <div style="margin-top:-10px;">
                     <a href="/">
                         <img src="@Helper.GetImageUrl("logo.png")" alt="YouIT" />
                     </a>
                 </div>
+               
                 <div class="menu">
                     @await Component.InvokeAsync("TopMenu")
                 </div>
-                <div class="login-bar">
-                    <div class="search">
-                        <form id="searchForm" method="post" asp-action="Search" class="desktop">
-                            <div style="position:relative;">
-                                <input id="searchBox" type="text" class="searchTerm" name="term" placeholder="Что ищем?">
-                                <a href="#" onclick="searchClick()">
-                                    <img src="@Helper.GetImageUrl("search.png")" alt="Искать" />
-                                </a>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="login">
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <a href="/profile/">@User.Identity.Name</a>
-                            <a asp-controller="account" asp-action="signOut"><i class="fas fa-sign-out-alt"></i></a>
-                        }
-                        else
-                        {
-                            <span onclick="loadAuthorizeModal()" class="login-link">
-                                <i class="fas fa-sign-in-alt"></i> Войти
-                            </span>
-                        }
-                    </div>
+                <div class="search">
+                    <form id="searchForm" method="post" asp-action="Search" class="desktop">
+                        <div style="position:relative;">
+                            <input id="searchBox" type="text" class="searchTerm" name="term" placeholder="Что ищем?">
+                            <a href="#" onclick="searchClick()">
+                                <img src="@Helper.GetImageUrl("search.png")" alt="Искать" />
+                            </a>
+                        </div>
+                    </form>
                 </div>
+                <div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a href="/profile/">@User.Identity.Name</a>
+                        <a asp-controller="account" asp-action="signOut"><i class="fas fa-sign-out-alt"></i></a>
+                    }
+                    else
+                    {
+                        <span onclick="loadAuthorizeModal()" class="login-link">
+                            <i class="fas fa-sign-in-alt"></i> Войти
+                        </span>
+                    }
+                </div>
+
             </div>
+
+            
+
+          
+
+            
+
         </div>
-
-        <div class="box sidebar">
-
+        <div class="t-main" style="align-items: center; justify-content: center;">
+            @RenderBody()
+        </div>
+        <div class="t-aside" style=" justify-content: center;">
             <div class="topCommentsBar">
                 @await Component.InvokeAsync("RealTimeComments")
             </div>
-
             <div style="padding:5px 10px 15px 10px;">
                 @await Component.InvokeAsync("PostTags")
             </div>
@@ -171,28 +187,25 @@
 
             </div>
         </div>
+        <div style="justify-content: center;">
+            d
+        </div>
+        <div class="t-footer" style="grid-column: 1 / span 3;  justify-content: center;">
+            @await Html.PartialAsync("_Footer")
+        </div>
 
-
-
-        @RenderBody()
-
-
-
-
-
-
-        @await Html.PartialAsync("_Footer")
-        <script async>
-            searchClick = () => {
-                if (!$('#searchBox').val()) return;
-                document.getElementById('searchForm').submit();
-            }
-
-            loadAuthorizeModal = () => {
-                $('#authorizeModal').modal('show');
-            }
-        </script>
     </div>
+
+    <script async>
+        searchClick = () => {
+            if (!$('#searchBox').val()) return;
+            document.getElementById('searchForm').submit();
+        }
+
+        loadAuthorizeModal = () => {
+            $('#authorizeModal').modal('show');
+        }
+    </script>
 
     <script type="text/javascript" src="//cdn.iubenda.com/cs/stable/iubenda_cs.js" charset="UTF-8" async></script>
 
