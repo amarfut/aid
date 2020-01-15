@@ -29,48 +29,52 @@
     string previewImageUrl = "https://storage.googleapis.com/youit/images/" + post.Url + "_mini.png";
 
     <div style="padding-bottom:30px;">
-        <a href="/post/@post.Url"><h1>@post.Title</h1></a>
+        <a href="/post/@post.Url"><h2>@post.Title</h2></a>
 
-        <a href="/post/@post.Url"> <img alt="@post.Title" src="@previewImageUrl" style="float:left; margin-right:10px;" /> </a>
+        <a href="/post/@post.Url"> 
+            <img alt="@post.Title" src="@previewImageUrl" style="float:left; margin-right:10px;" /> 
+        </a>
+
         @post.Description
 
-    <div style="padding-top:10px; color:#808080;">
-        <i class="far fa-eye"></i> <span>@post.ViewsCount</span> &nbsp;
-        <i class="far fa-comment"></i> <span>@post.CommentsCount</span>&nbsp;
-        <i class="far fa-thumbs-up"></i> <span>@post.LikesCount</span>&nbsp;
-        <i class="far fa-thumbs-down"></i> <span>@post.DislikesCount</span>&nbsp;
-        | &nbsp;<span>Добавлено @Helper.GetRelativeTime(post.Created)</span>
-    </div>
-
+        <div style="padding-top:10px; color:#808080;">
+            <i class="far fa-eye"></i> <span>@post.ViewsCount</span> &nbsp;
+            <i class="far fa-comment"></i> <span>@post.CommentsCount</span>&nbsp;
+            <i class="far fa-thumbs-up"></i> <span>@post.LikesCount</span>&nbsp;
+            <i class="far fa-thumbs-down"></i> <span>@post.DislikesCount</span>&nbsp;
+            | &nbsp;<span>Добавлено @Helper.GetRelativeTime(post.Created)</span>
+        </div>
 
     </div>
 }
 
-
-
 <!-- ko foreach: posts -->
-<div class="box content">
+<div  style="padding-bottom:30px;">
     <a data-bind="attr: { href: postUrl }">
-        <img style="max-width:100%" data-bind="attr: { src: imageUrl, alt: title }" />
+        <h2 data-bind="text: title"></h2>
     </a>
-    <div class="post-button-wrapper">
-        <div><i class="far fa-eye"></i> <span data-bind="text: viewsCount"></span></div>
-        <div><i class="far fa-comment"></i> <span data-bind="text: commentsCount"></span></div>
-        <div><i class="far fa-thumbs-up"></i> <span data-bind="text: likesCount"></span></div>
-        <div><i class="far fa-thumbs-down"></i> <span data-bind="text: dislikesCount"></span></div>
+    <a data-bind="attr: { href: postUrl }">
+        <img style="float:left; margin-right:10px;" data-bind="attr: { src: imageUrl, alt: title }" />
+    </a>
+    <span data-bind="text: description"></span>
+
+    <div style="padding-top:10px; color:#808080;">
+        <i class="far fa-eye"></i> <span data-bind="text: viewsCount"></span> &nbsp;
+        <i class="far fa-comment"></i> <span data-bind="text: commentsCount"></span> &nbsp;
+        <i class="far fa-thumbs-up"></i> <span data-bind="text: likesCount"></span> &nbsp;
+        <i class="far fa-thumbs-down"></i> <span data-bind="text: dislikesCount"></span>
     </div>
-    <a data-bind="attr: { href: postUrl }">
-        <h3 data-bind="text: title"></h3>
-    </a>
-</div>
-<!-- /ko -->
+       
 
-<div class="box more-posts-button">
-    <p class="loader" style="margin:auto" data-bind="visible: !morePostsButtonVisible() && !endPostsTextVisible()"></p>
-    <span data-bind="click: addPosts, visible: morePostsButtonVisible" style="padding:10px; color:#FFF;">
-        Загрузить больше постов
-    </span>
-    <h4 data-bind="visible: endPostsTextVisible">Извините, посты закончились</h4>
-</div>
+    </div>
+    <!-- /ko -->
 
-<script src="~/js/start-page.js" async></script>
+    <div class="box more-posts-button">
+        <p class="loader" style="margin:auto" data-bind="visible: !morePostsButtonVisible() && !endPostsTextVisible()"></p>
+        <span data-bind="click: addPosts, visible: morePostsButtonVisible" style="padding:10px; color:#FFF;">
+            Загрузить больше постов
+        </span>
+        <h4 data-bind="visible: endPostsTextVisible">Извините, посты закончились</h4>
+    </div>
+
+    <script src="~/js/start-page.js" async></script>

@@ -106,14 +106,9 @@
     </div>
 
 
-    <div style="margin: 0 auto;
-            max-width: 90%;
-            display:grid;
-            grid-template-columns: 55% 22.5% 22.5%;
-           grid-gap: 1em;">
+    <div class="main-wrapper">
 
-        <div class="t-header" style="grid-column: 1 / span 3; ">
-
+        <div class="t-header">
 
             <div style="display:grid; grid-template-columns:1fr 3fr 2fr 1fr;">
                 <div style="margin-top:-10px;">
@@ -121,7 +116,7 @@
                         <img src="@Helper.GetImageUrl("logo.png")" alt="YouIT" />
                     </a>
                 </div>
-               
+
                 <div class="menu">
                     @await Component.InvokeAsync("TopMenu")
                 </div>
@@ -136,32 +131,28 @@
                     </form>
                 </div>
                 <div>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <a href="/profile/">@User.Identity.Name</a>
-                        <a asp-controller="account" asp-action="signOut"><i class="fas fa-sign-out-alt"></i></a>
-                    }
-                    else
-                    {
-                        <span onclick="loadAuthorizeModal()" class="login-link">
-                            <i class="fas fa-sign-in-alt"></i> Войти
-                        </span>
-                    }
+                    <div style="float:right; margin-right:0;">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="/profile/">@User.Identity.Name</a>
+                            <a asp-controller="account" asp-action="signOut"><i class="fas fa-sign-out-alt"></i></a>
+                        }
+                        else
+                        {
+                            <span onclick="loadAuthorizeModal()" class="login-link">
+                                <i class="fas fa-sign-in-alt"></i> Войти
+                            </span>
+                        }
+                    </div>
                 </div>
 
             </div>
 
-            
-
-          
-
-            
-
         </div>
-        <div class="t-main" style="align-items: center; justify-content: center;">
+        <div class="t-main">
             @RenderBody()
         </div>
-        <div class="t-aside" style=" justify-content: center;">
+        <div class="t-comments">
             <div class="topCommentsBar">
                 @await Component.InvokeAsync("RealTimeComments")
             </div>
@@ -187,10 +178,12 @@
 
             </div>
         </div>
-        <div style="justify-content: center;">
-            d
+        <div class="t-popular">
+            <div class="topCommentsBar">
+                @await Component.InvokeAsync("PopularPosts")
+            </div>
         </div>
-        <div class="t-footer" style="grid-column: 1 / span 3;  justify-content: center;">
+        <div class="t-footer">
             @await Html.PartialAsync("_Footer")
         </div>
 

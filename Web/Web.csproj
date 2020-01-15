@@ -40,6 +40,9 @@
     <Content Update="Views\Map\Map.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Shared\Components\PopularPosts\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Shared\Components\PostTags\Default.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

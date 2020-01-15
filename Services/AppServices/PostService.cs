@@ -15,6 +15,14 @@ using Services.CommandHandlers;
 using Services.Utils;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
+using DataAccess;
+using Domain.Commands;
+using Domain.Entities;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using Services.Utils;
+using System.Threading.Tasks;
+using MongoDB.Driver.Linq;
 
 namespace Services.AppServices
 {
@@ -103,6 +111,34 @@ namespace Services.AppServices
         public async Task<List<PostPreviewDto>> GetUserBookmarksAsync(string userId)
         {
             return await _getUserBookmarksQueryHandler.HandleAsync(new GetUserBookmarksQuery(userId));
+        }
+
+        public async Task<List<PostPreviewDto>> GetTopPosts()
+        {
+            DatabaseContext db = new DatabaseContext();
+            var config = await db.Config.AsQueryable().ToListAsync();
+
+            if (config != null & config.Count > 0)
+            {
+                string[] popularPosts = config[0].Popular;
+                var posts = await db.Posts.AsQueryable().Where(p => popularPosts.Contains(p.Url)).ToListAsync();
+
+                if (posts.Count != popularPosts.Length)
+                {
+                    return posts.Select(p => new PostPreviewDto(p)).ToList();
+                }
+
+                List<Post> sorted = new List<Post>();
+                for (int i = 0; i < posts.Count; i++)
+                {
+                    var postToAdd = posts.FirstOrDefault(x => x.Url == popularPosts[i]);
+                    if(postToAdd != null) sorted.Add(postToAdd);
+                }
+
+                return sorted.Select(p => new PostPreviewDto(p)).ToList();
+            }
+
+            return new List<PostPreviewDto>();
         }
     }
 }

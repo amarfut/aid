@@ -1,0 +1,20 @@
+﻿@model List<Services.DTOs.PostPreviewDto>
+@using Web.Utils
+@using Microsoft.AspNetCore.Mvc;
+
+<span style="font-size:23px;">Популярное</span>
+<div style="margin-top:27px;">
+    @foreach (var post in Model)
+    {
+    <div style="margin-bottom:20px;">
+        @{string imagePath = $"https://storage.googleapis.com/youit/images/{post.Url}_mini.png"; }
+
+        <img src="@imagePath" alt="@post.Title" style="margin-right:5px; margin-top:5px; width:30%; float:left; opacity:0.8" />
+
+        <a asp-controller="Home" asp-action="Post" asp-route-url="@post.Url" style="font-size:17px;">@post.Title</a>
+
+        <div style="clear: left;"></div>
+        <span style="color:#b2b2b2"> @Helper.GetRelativeTime(post.Created)</span>
+    </div>
+    }
+</div>

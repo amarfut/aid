@@ -41,5 +41,6 @@ namespace DataAccess
 
         public IMongoCollection<PostTag> Tags => _database.GetCollection<PostTag>("tags");
 
+        public IMongoCollection<Config> Config => _database.GetCollection<Config>("config");
     }
 }

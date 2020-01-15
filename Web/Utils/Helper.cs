@@ -66,7 +66,7 @@ namespace Web.Utils
                 if (totalHours >= 11 && totalHours <= 19) return totalHours + " часов назад";
 
                 int v = totalHours % 10;
-                if (v == 0) return " часов назад";
+                if (v == 0) return totalHours + " часов назад";
                 else if (v == 1) return totalHours + " час назад";
                 else if (v == 2 || v == 3 || v == 4) return totalHours + " часа назад";
                 else return totalHours + " часов назад";
@@ -76,7 +76,7 @@ namespace Web.Utils
                 if (totalDays >= 11 && totalDays <= 19) return totalDays + " дней назад";
 
                 int v = totalDays % 10;
-                if (v == 0) return " дней назад";
+                if (v == 0) return totalDays + " дней назад";
                 else if (v == 1) return totalDays + " день назад";
                 else if (v == 2 || v == 3 || v == 4) return totalDays + " дня назад";
                 else return totalDays + " дней назад";

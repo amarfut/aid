@@ -1,12 +1,13 @@
 ﻿class Post {
-    constructor(id, title, postUrl, viewsCount, commentsCount, likesCount, dislikesCount) {
+    constructor(id, title, postUrl, viewsCount, commentsCount, description, likesCount, dislikesCount) {
         this.id = id;
         this.title = title;
         this.viewsCount = viewsCount > 1000 ? Math.floor(viewsCount / 1000) + 'k' : viewsCount;
         this.commentsCount = commentsCount;
+        this.description = description;
         this.likesCount = ko.observable(likesCount);
         this.dislikesCount = ko.observable(dislikesCount);
-        this.imageUrl = 'https://storage.googleapis.com/youit/images/' + postUrl + '.png';
+        this.imageUrl = 'https://storage.googleapis.com/youit/images/' + postUrl + '_mini.png';
         this.postUrl = '/post/' + postUrl;
     }
 }
@@ -50,7 +51,7 @@ function AppViewModel() {
             self.endPostsTextVisible(!postsPresent);
             if (!postsPresent) return;
             for (let post of posts) {
-                self.posts.push(new Post(post.id, post.title, post.url, post.viewsCount, post.commentsCount, post.likesCount, post.dislikesCount));
+                self.posts.push(new Post(post.id, post.title, post.url, post.viewsCount, post.commentsCount, post.description, post.likesCount, post.dislikesCount));
             }
         });
     };
