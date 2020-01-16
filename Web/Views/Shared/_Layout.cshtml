@@ -160,6 +160,12 @@
                 @await Component.InvokeAsync("PostTags")
             </div>
 
+            
+        </div>
+        <div class="t-popular">
+            <div class="topCommentsBar">
+                @await Component.InvokeAsync("PopularPosts")
+            </div>
             <div class="subscribeBar" style="text-align:center">
                 <span>Подписаться на обновления</span>
 
@@ -176,11 +182,6 @@
                 </div>
                 <span style="font-size:16px;">Подписавшись, Вы никогда не<br /> пропустите появление нового контента</span>
 
-            </div>
-        </div>
-        <div class="t-popular">
-            <div class="topCommentsBar">
-                @await Component.InvokeAsync("PopularPosts")
             </div>
         </div>
         <div class="t-footer">

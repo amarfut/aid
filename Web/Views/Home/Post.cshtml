@@ -20,111 +20,112 @@
     }
 }
 
-<div class="box full-post">
+    <div class="box full-post">
 
-    <h1>@Model.Title</h1>
+        <h1>@Model.Title</h1>
 
-    @{
-        string postUrl = "https://youit.pro/post/" + Model.Url;
+        @{
+            string postUrl = "https://youit.pro/post/" + Model.Url;
 
-        string shareVK = "https://vk.com/share.php?url=" + postUrl;
-        string shareFB = "https://www.facebook.com/sharer/sharer.php?u=" + postUrl;
-        string shareLI = "https://www.linkedin.com/sharing/share-offsite/?url=" + postUrl;
-    }
+            string shareVK = "https://vk.com/share.php?url=" + postUrl;
+            string shareFB = "https://www.facebook.com/sharer/sharer.php?u=" + postUrl;
+            string shareLI = "https://www.linkedin.com/sharing/share-offsite/?url=" + postUrl;
+        }
 
-    <div id="post-statistic">
-        <div>
+        <div id="post-statistic">
+            <div>
 
-            <i class="far fa-eye"></i> @Model.ViewsFormatted &nbsp;
-            <a href="#begin-comments" style="color:#9b9b9b;"><i class="far fa-comment"></i> @Model.CommentsCount</a> &nbsp;
+                <i class="far fa-eye"></i> @Model.ViewsFormatted &nbsp;
+                <a href="#begin-comments" style="color:#9b9b9b;"><i class="far fa-comment"></i> @Model.CommentsCount</a> &nbsp;
 
-            <span id="post-likes" class="@thumbUpClass" data-bind="click: function() { setLike('@Model.Id') }" style="cursor:pointer;">
-                <i class="far fa-thumbs-up"></i> <span>@Model.Likes</span>
-            </span> &nbsp;
-            <span id="post-dislikes" class="@thumbDownClass" data-bind="click: function() { setDislike('@Model.Id') }" style="cursor:pointer;">
-                <i class="far fa-thumbs-down"></i> <span>@Model.Dislikes</span>
-            </span>
+                <span id="post-likes" class="@thumbUpClass" data-bind="click: function() { setLike('@Model.Id') }" style="cursor:pointer;">
+                    <i class="far fa-thumbs-up"></i> <span>@Model.Likes</span>
+                </span> &nbsp;
+                <span id="post-dislikes" class="@thumbDownClass" data-bind="click: function() { setDislike('@Model.Id') }" style="cursor:pointer;">
+                    <i class="far fa-thumbs-down"></i> <span>@Model.Dislikes</span>
+                </span>
 
-            | <span>Добавлено @Helper.GetRelativeTime(Model.Created)</span> &nbsp;
+                | <span>Добавлено @Helper.GetRelativeTime(Model.Created)</span> &nbsp;
+            </div>
+
+            <div style="margin-top:10px;">
+                <a href="@shareVK" class="pure-button pure-button-primary social-share-button" style="background-color:#45668e;">
+                    ВК <i class="far fa-share-square"></i>
+                </a>
+                <a href="@shareFB" class="pure-button pure-button-primary social-share-button" style="background-color:#3b5998;">
+                    FB <i class="far fa-share-square"></i>
+                </a>
+                <a href="@shareLI" class="pure-button pure-button-primary social-share-button" style="background-color:#0e76a8;">
+                    LI <i class="far fa-share-square"></i>
+                </a>
+            </div>
         </div>
 
-        <div style="margin-top:10px;">
-            <a href="@shareVK" class="pure-button pure-button-primary social-share-button" style="background-color:#45668e;">
-                ВК <i class="far fa-share-square"></i>
-            </a>
-            <a href="@shareFB" class="pure-button pure-button-primary social-share-button" style="background-color:#3b5998;">
-                FB <i class="far fa-share-square"></i>
-            </a>
-            <a href="@shareLI" class="pure-button pure-button-primary social-share-button" style="background-color:#0e76a8;">
-                LI <i class="far fa-share-square"></i>
-            </a>
-        </div>
-    </div>
+        <div class="post-text">
 
-    <div class="post-text">
+            @if (Model.Text.Contains("{ad}"))
+            {
+                string[] parts = Model.Text.Split("{ad}");
 
-        @if (Model.Text.Contains("{ad}"))
-        {
-            string[] parts = Model.Text.Split("{ad}");
+                @Html.Raw(parts[0])
 
-            @Html.Raw(parts[0])
+                <script class="_iub_cs_activate" type="text/plain" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+                </script>
+                <ins class="adsbygoogle"
+                     style="display:block; text-align:center;"
+                     data-ad-layout="in-article"
+                     data-ad-format="fluid"
+                     data-ad-client="ca-pub-4128223586304442"
+                     data-ad-slot="4692679394"></ins>
+                <script class="_iub_cs_activate" type="text/plain">
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
 
-            <script class="_iub_cs_activate" type="text/plain" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                @Html.Raw(parts[1])
+            }
+            else
+            {
+                @Html.Raw(Model.Text)
+            }
+
+            <div style="margin-bottom:20px;">
+                @for (int i = 0; i < Model.Tags.Length; i++)
+                {
+                    <a href="/tags/@Model.Tags[i].Name" class="post-tag">@Model.Tags[i].Display</a>
+                }
+            </div>
+
+
+
+            <script class="_iub_cs_activate" type="text/plain" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+            </script>
             <ins class="adsbygoogle"
                  style="display:block; text-align:center;"
                  data-ad-layout="in-article"
                  data-ad-format="fluid"
                  data-ad-client="ca-pub-4128223586304442"
-                 data-ad-slot="4692679394"></ins>
+                 data-ad-slot="6639174127"></ins>
             <script class="_iub_cs_activate" type="text/plain">
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
 
-            @Html.Raw(parts[1])
-        }
-        else
-        {
-            @Html.Raw(Model.Text)
-        }
 
-        <div style="margin-bottom:20px;">
-            @for (int i = 0; i < Model.Tags.Length; i++)
+            @if (Model.Similar != null && Model.Similar.Length > 0)
             {
-                <a href="/tags/@Model.Tags[i].Name" class="post-tag">@Model.Tags[i].Display</a>
+                <br />
+                <h3>Похожие статьи</h3>
+                <ul>
+                    @foreach (var post in Model.Similar)
+                    {
+                        <li>
+                            <a href="/post/@post.Url">@post.Title</a>
+                        </li>
+                    }
+                </ul>
             }
         </div>
 
+        @await Html.PartialAsync("_PostComments", Model)
 
-
-        <script class="_iub_cs_activate" type="text/plain" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
-        </script>
-        <ins class="adsbygoogle"
-             style="display:block; text-align:center;"
-             data-ad-layout="in-article"
-             data-ad-format="fluid"
-             data-ad-client="ca-pub-4128223586304442"
-             data-ad-slot="6639174127"></ins>
-        <script class="_iub_cs_activate" type="text/plain">
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-
-
-        @if (Model.Similar != null && Model.Similar.Length > 0)
-        {
-            <br />
-            <h3>Похожие статьи</h3>
-            <ul>
-                @foreach (var post in Model.Similar)
-                {
-                    <li>
-                        <a href="/post/@post.Url">@post.Title</a>
-                    </li>
-                }
-            </ul>
-        }
+        <script src="~/js/full-post.js" async></script>
     </div>
-
-    @await Html.PartialAsync("_PostComments", Model)
-
- 
-</div>
