@@ -23,6 +23,7 @@ namespace Services.DTOs
             DislikesCount = post.WhoDisliked.Length;
             Created = post.Created;
             Description = post.Description;
+
         }
 
         public string Id { get; set; }
@@ -34,6 +35,7 @@ namespace Services.DTOs
         public int CommentsCount { get; set; }
         public int LikesCount { get; set; }
         public int DislikesCount { get; set; }
+        public string CreatedRelative { get; set; }
         public DateTime Created { get; set; }
     }
 }

@@ -50,7 +50,13 @@ namespace Web.Controllers
 
         public async Task<IEnumerable<PostPreviewDto>> LoadPosts(int skip)
         {
-            return await _postService.GetPostPreviews(skip, 10);
+            var posts = await _postService.GetPostPreviews(skip, 10);
+            foreach (var post in posts)
+            {
+                post.CreatedRelative = Utils.Helper.GetRelativeTime(post.Created);
+            }
+
+            return posts;
         }
 
         public async Task<IEnumerable<PostPreviewDto>> LoadSimilarPosts(PostType type)

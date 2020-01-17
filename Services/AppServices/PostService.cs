@@ -51,6 +51,8 @@ namespace Services.AppServices
         public async Task<IEnumerable<PostPreviewDto>> GetPostPreviews(int skip, int take)
         {
             var posts = await _getPostPreviewsQueryHandler.HandleAsync(new GetPostPreviewQuery(skip, take));
+           
+
             return posts;
         }
 
