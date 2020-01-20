@@ -1,0 +1,19 @@
+{"_id":{"$oid":"5e07b162264c0bcdadd95c0d"},"Name":"rabotaprogrammista","Display":"работа программиста"}
+{"_id":{"$oid":"5e07b17c264c0bcdadd95c34"},"Name":"quality","Display":"качество кода"}
+{"_id":{"$oid":"5e07b1a6264c0bcdadd95c54"},"Name":"itcompany","Display":"IT-компания"}
+{"_id":{"$oid":"5e07b21a264c0bcdadd95cc0"},"Name":"learning","Display":"обучение программированию"}
+{"_id":{"$oid":"5e07b2d8264c0bcdadd95d53"},"Name":"carrier","Display":"карьера"}
+{"_id":{"$oid":"5e07b2e8264c0bcdadd95d61"},"Name":"interview","Display":"собеседование"}
+{"_id":{"$oid":"5e07b301264c0bcdadd95d71"},"Name":"csharp","Display":"C#"}
+{"_id":{"$oid":"5e07b312264c0bcdadd95d7f"},"Name":"certificate","Display":"сертификация"}
+{"_id":{"$oid":"5e07b326264c0bcdadd95d8f"},"Name":"junior","Display":"джуниор"}
+{"_id":{"$oid":"5e07b344264c0bcdadd95da1"},"Name":"algorithms","Display":"алгоритмы"}
+{"_id":{"$oid":"5e07b35f264c0bcdadd95db9"},"Name":"oop","Display":"ООП"}
+{"_id":{"$oid":"5e07b37b264c0bcdadd95dcb"},"Name":"enterprise","Display":"энтерпрайз"}
+{"_id":{"$oid":"5e07b392264c0bcdadd95de1"},"Name":"dotnet","Display":".NET"}
+{"_id":{"$oid":"5e07b3a4264c0bcdadd95def"},"Name":"testing","Display":"тестирование"}
+{"_id":{"$oid":"5e07b3ba264c0bcdadd95dff"},"Name":"js","Display":"javascript"}
+{"_id":{"$oid":"5e07b2ba264c0bcdadd95d3d"},"Name":"programming","Display":"программирование"}
+{"_id":{"$oid":"5e0a2a73264c0bcdadda5172"},"Name":"estimate","Display":"эстимейты"}
+{"_id":{"$oid":"5e0db53e264c0bcdaddbb974"},"Name":"roadmaps","Display":"roadmaps"}
+{"_id":{"$oid":"5e14901e264c0bcdadddcb08"},"Name":"informatics","Display":"информатика"}
