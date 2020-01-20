@@ -4,7 +4,7 @@ function ProfileCommentsViewModel() {
     self.noCommentsVisible = ko.observable(false);
 
     self.getPostUrl = function (postUrl, commentId) {
-        if (postUrl === 'dotnetweb') return `/map/${postUrl}#${commentId}`;
+        if (postUrl === 'dotnetweb' || postUrl === 'js') return `/map/${postUrl}#${commentId}`;
         return `/post/${postUrl}#${commentId}`;
     };
 

@@ -9,7 +9,7 @@
     int last = comment.Text.Length > 120 ? 120 : comment.Text.Length;
 
     string url = $"/post/{comment.PostUrl}#{comment.CommentId}";
-    if (comment.PostUrl == "dotnetweb")
+    if (comment.PostUrl == "dotnetweb" || comment.PostUrl == "js")
     {
         url = $"/map/{comment.PostUrl}#{comment.CommentId}";
     }
