@@ -27,11 +27,9 @@ namespace Web.Controllers
             }
             else if (id == "js")
             {
-                var post = await postService.GetPost("dotnetweb");
+                var post = await postService.GetPost("js");
                 return View("JavaScript", post);
             }
-
-
 
             return View();
         }
